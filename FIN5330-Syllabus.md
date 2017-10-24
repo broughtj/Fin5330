@@ -49,13 +49,14 @@ Students will be assessed according to the following:
 
 - Homework problems and computational assignments (25%)
     + Homework assignments will correspond with your readings
-    + Python computational assignments will augment your readings
+    + Julia computational assignments will augment your readings
     
 - Replication Projects (25%)
     + You will be asked to replicate the computational aspects of some chosen academic papers
     + [Simulating Supply](http://www2.owen.vanderbilt.edu/nick.bollen/research/nw4.PDF) by Bollen and Whaley
     + [Performance of Statistical Arbitrage in Petroleum Futures Markets](https://goo.gl/6rSMqh) by Alizadeh & Nomikos 
-    + The deliverable will be a markdown document consisting of the essay and Python code 
+	+ [An Examination of the Robustness of the Weekend Effect](https://goo.gl/hUHEG5) by Connolly 
+    + The deliverable will be a markdown document consisting of the essay and Julia code 
 
 - A final project (40%)
     + Students may work in teams of two
@@ -63,7 +64,7 @@ Students will be assessed according to the following:
     + The deliverable will be a markdown with paper and code combined
     
 - A final essay (10%)
-    + Topic: "What Should (Computational) Economists Do?"
+    + Topic: "What Should Econometricians Do?"
     + I will discuss this with you in class
     + The deliverable will be an markdown document 
 
@@ -72,18 +73,15 @@ Dates for each of these stages will be discussed in class and updated on the Goo
 
 ### Software 
 
-Finance 5350 is taught using Python and the *Scientific Stack*, a set of core scientific computing packages written and maintained by various third parties.
+Finance 5350 is taught using the Julia programming language.
 
-#### Anaconda Python 3 Edition
+We will be using the professional version of Julia offered by JuliaComputing for free from the following:
 
-The main focus of the course is the Python programming for financial modeling. We will be using the Anaconda Python
-Distribution, which is free:
-
-- [Anaconda Python Distribution](https://www.continuum.io/downloads).
+- [JuliaPro](https://juliacomputing.com/products/juliapro.html)
 
 <br>
 
-I will be giving detailed instructions on how to install and get Python running on your system. 
+I will be giving detailed instructions on how to install and get Julia running on your system. 
 
 <br>
 
@@ -91,7 +89,7 @@ We will heavily use both `git` and [github](htts://github.io). Installation inst
 
 <br>
 
-For Finance 5350 we will learn modern document preparation tools:
+For Finance 5330 we will learn modern document preparation tools:
 
 - [Jupyter Notebook](http://jupyter.org/)
 - [Pandoc](http://pandoc.org/)
@@ -106,7 +104,7 @@ I will be giving just-in-time tutorials for each of these tools as we need them.
 
 #### Slack
 
-All class communication will take place using [Slack](https://slack.com), a messaging system that replaces email. Students will be invited to the [Fin 5350 Slack channel](https://fin5350.slack.com) prior to the first week of class.
+All class communication will take place using [Slack](https://slack.com), a messaging system that replaces email. Students will be invited to the [Fin 5330 Slack channel](https://fin5330.slack.com) prior to the first week of class.
 
 Clients for most computing and mobile platforms can be [downloaded from the Slack website](https://slack.com/downloads), or students may use the web client via a desktop browser.
 
