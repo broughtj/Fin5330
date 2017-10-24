@@ -21,7 +21,9 @@
 
 ### Course Description
 
-This is ...
+This course is an introduction to financial econometric modeling. The focus will be more applied than theoretical. That is, rather than spend our time
+doing proofs we will instead spend our time analyzing financial data. One theme of the course will be acquiring the necessary computational skills to 
+do modern applied financial econometrics. The applied nature of the course will help students bridge the gap between theory and practice.
 
 
 ### Prerequisites 
