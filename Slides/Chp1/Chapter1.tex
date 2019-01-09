@@ -25,55 +25,6 @@
 \usepackage{microtype}
 \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\usepackage{color}
-\usepackage{fancyvrb}
-\newcommand{\VerbBar}{|}
-\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
-\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
-% Add ',fontsize=\small' for more characters per line
-\usepackage{framed}
-\definecolor{shadecolor}{RGB}{248,248,248}
-\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
-\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
-\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
-\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
-\newcommand{\ImportTok}[1]{#1}
-\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
-\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
-\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
-\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
-\newcommand{\BuiltInTok}[1]{#1}
-\newcommand{\ExtensionTok}[1]{#1}
-\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
-\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
-\newcommand{\RegionMarkerTok}[1]{#1}
-\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
-\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
-\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
-\newcommand{\NormalTok}[1]{#1}
-\usepackage{graphicx,grffile}
-\makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight0.8\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 
 % Comment these out if you don't want a slide with just the
 % part/section/subsection/subsubsection title:
@@ -259,209 +210,107 @@
 
 \end{frame}
 
-\section{Pop Songs and Political
-Science}\label{pop-songs-and-political-science}
+\section{Chapter 1: Introduction to
+Derivatives}\label{chapter-1-introduction-to-derivatives}
 
-\begin{frame}{Sheena Easton and Game Theory}
-
-Sheena Easton describes the following scenario for her baby:
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  Takes the morning train
-\item
-  Works from nine 'til five
-\item
-  Takes another train home again
-\item
-  Finds Sheena Easton waiting for him
-\end{enumerate}
-
-Sheena Easton and her baby are playing a \textbf{zero-sum (total
-conflict) game}.
+\begin{frame}{What is a Derivative?}
 
 \begin{itemize}
-\tightlist
 \item
-  Akin to Holmes-Moriarty game (see: von Neumann and Morgenstern)
+  \textbf{Definition:} a financial instrument that has a value
+  determined by the price of something else
 \item
-  Solution: \textbf{mixed strategy}
+  An agreement where you pay \(\$1\) if the price of corn is greater
+  than \(\$3\) and receive \(\$1\) if the price of corn is less than
+  \(\$1\) is a derivative
+
+  \begin{itemize}
+  \tightlist
+  \item
+    This contract can be used to speculate on the price of corn or it
+    can be used to reduce risk. It is not the contract itself, but how
+    it used, and who uses it, that determines whether or not it is
+    risk-reducing.
+  \end{itemize}
 \end{itemize}
 
 \end{frame}
 
-\begin{frame}{Rick Astley's Re-election Platform}
+\begin{frame}{An Overview of Financial Markets}
 
-Rick Astley's campaign promises:
+The trading of a financial asset involves at least four discrete steps:
 
 \begin{itemize}
-\tightlist
 \item
-  Never gonna give you up.
+  A buyer and a sellter must locate one another and agree on a price
 \item
-  Never gonna let you down.
+  The trade must be \emph{cleared} (the obligations of each party are
+  specified)
 \item
-  Never gonna run around and desert you.
+  The trade must be \emph{settled} (the buyer and the seller must
+  deliver the cash or securities necessary to satisfy their obligations
+  in the required period of time)
 \item
-  Never gonna make you cry.
-\item
-  Never gonna say goodbye.
-\item
-  Never gonna tell a lie and hurt you.
+  Ownership records are updated
 \end{itemize}
 
-Whereas these pledges conform to the preferences of the \textbf{median
-voter}, we expect Congressman Astley to secure re-election.
+\vspace{3mm}
+
+\textbf{\emph{NB:}} notice that well-defined property rights are an
+assumption of properly functioning capital markets.
 
 \end{frame}
 
-\begin{frame}{Caribbean Queen and Operation Urgent Fury}
-
-Billy Ocean released ``Caribbean Queen'' in 1984.
+\begin{frame}{An Overview of Financial Markets (Continued)}
 
 \begin{itemize}
-\tightlist
 \item
-  Emphasized sharing the same dream
+  Much trading of financial claims takes place on organized exchanges.
+  In the past, the exchange was solely a physical location where traders
+  would buy and sell. Such in-person venues have largely been replaced
+  by electronic networks that provide a virtual trading venue.
 \item
-  Hearts beating as one
-\end{itemize}
-
-``Caribbean Queen'' is about the poor execution of Operation Urgent
-Fury.
-
-\begin{itemize}
-\tightlist
-\item
-  Echoed JCS chairman David Jones' frustrations with military
-  establishment.
-\end{itemize}
-
-Billy Ocean is advocating for what became the Goldwater-Nichols Act.
-
-\begin{itemize}
-\tightlist
-\item
-  Wanted to take advantage of \textbf{economies of scale}, resolve
-  \textbf{coordination problems} in U.S. military.
+  After a trade has taken place, a \textbf{clearinghouse} matches the
+  buyers and sellers, keeping track of their obligations and payments.
+  To facilitate these payments and to help manage credit risk, a
+  derivatives clearinghouse typically imposes itself in the transaction,
+  becoming the buyer to all sellers and the seller to all buyers.
 \end{itemize}
 
 \end{frame}
 
-\begin{frame}{The Good Day Hypothesis}
-
-We know the following about Ice Cube's day.
-
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
-\tightlist
-\item
-  The Lakers beat the Supersonics.
-\item
-  No helicopter looked for a murder.
-\item
-  Consumed Fatburger at 2 a.m.
-\item
-  Goodyear blimp: ``Ice Cube's a pimp.''
-\end{enumerate}
-
-This leads to two different hypotheses:
+\begin{frame}{An Overview of Financial Markets (Continued)}
 
 \begin{itemize}
-\tightlist
 \item
-  \(H_0\): Ice Cube's day is statistically indistinguishable from a
-  typical day.
+  It is possible for large traders to trade many financial claims
+  directly with a dealer bypassing organized exchanges. Such trading is
+  said to occur in the \textbf{over-the-counter} (OTC) market
 \item
-  \(H_1\): Ice Cube is having a good (i.e.~greater than average) day.
+  Exchange activity is public and highly regulated
+\item
+  OTC trading is not easy to observe or measure and is generally less
+  regulated
+\item
+  For many categories of financial claims, the value of OTC trading is
+  greater than the value traded on exchanges.
 \end{itemize}
 
-These hypotheses are tested using archival data of Ice Cube's life.
-
 \end{frame}
 
-\section{Example R code}\label{example-r-code}
+\begin{frame}{An Overview of Financial Markets (Continued)}
 
-\begin{frame}[fragile]{Example R stuff}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{summary}\NormalTok{(cars)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##      speed           dist       
-##  Min.   : 4.0   Min.   :  2.00  
-##  1st Qu.:12.0   1st Qu.: 26.00  
-##  Median :15.0   Median : 36.00  
-##  Mean   :15.4   Mean   : 42.98  
-##  3rd Qu.:19.0   3rd Qu.: 56.00  
-##  Max.   :25.0   Max.   :120.00
-\end{verbatim}
-
-\end{frame}
-
-\begin{frame}[fragile]{Slide with Plot}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{plot}\NormalTok{(pressure)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{Chapter1_files/figure-beamer/pressure-1.pdf}
-
-\end{frame}
-
-\begin{frame}[fragile]{ggplot code}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{df <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{rnorm}\NormalTok{(}\DecValTok{1000}\NormalTok{))}
-\NormalTok{x <-}\StringTok{ }\NormalTok{df}\OperatorTok{$}\NormalTok{x}
-\NormalTok{base <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(df, }\KeywordTok{aes}\NormalTok{(x)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_density}\NormalTok{()  }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_x_continuous}\NormalTok{(}\DataTypeTok{limits =} \KeywordTok{c}\NormalTok{(}\OperatorTok{-}\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{))}
-\NormalTok{base }\OperatorTok{+}\StringTok{ }\KeywordTok{stat_function}\NormalTok{(}\DataTypeTok{fun =}\NormalTok{ dnorm, }\DataTypeTok{colour =} \StringTok{"red"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\end{frame}
-
-\begin{frame}{Another Plot}
-
-\includegraphics{Chapter1_files/figure-beamer/plotit-1.pdf}
-
-\end{frame}
-
-\begin{frame}[fragile]{Python and R Code}
+There are at least four different measures of a market and its activity
 
 \begin{itemize}
 \item
-  Some Python code:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\BuiltInTok{print}\NormalTok{(}\StringTok{"Hello, World!"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Hello, World!
-\end{verbatim}
+  \textbf{Trading volume}. This measure counts
 \item
-  Some R code:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{print}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"Hello, "}\NormalTok{, }\StringTok{"World!"}\NormalTok{, }\DataTypeTok{sep=}\StringTok{""}\NormalTok{))}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [1] "Hello, World!"
-\end{verbatim}
+  \textbf{Market value}.
+\item
+  \textbf{Notional value}.
+\item
+  \textbf{Open Interest}.
 \end{itemize}
 
 \end{frame}

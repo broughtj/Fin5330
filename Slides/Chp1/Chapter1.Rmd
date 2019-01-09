@@ -67,115 +67,78 @@ padding-bottom: 10px;
 </style>
 
 
+# Chapter 1: Introduction to Derivatives
 
-# Pop Songs and Political Science
+## What is a Derivative? 
 
-## Sheena Easton and Game Theory
-
-Sheena Easton describes the following scenario for her baby:
-
-1. Takes the morning train
-2. Works from nine 'til five
-3. Takes another train home again
-4. Finds Sheena Easton waiting for him
-
-Sheena Easton and her baby are playing a **zero-sum (total conflict) game**.
-
-- Akin to Holmes-Moriarty game (see: von Neumann and Morgenstern)
-- Solution: **mixed strategy**
-
-## Rick Astley's Re-election Platform
-
-Rick Astley's campaign promises:
-
-- Never gonna give you up.
-- Never gonna let you down.
-- Never gonna run around and desert you.
-- Never gonna make you cry.
-- Never gonna say goodbye.
-- Never gonna tell a lie and hurt you.
-
-Whereas these pledges conform to the preferences of the **median voter**, we expect Congressman Astley to secure re-election.
-
-## Caribbean Queen and Operation Urgent Fury
-
-Billy Ocean released "Caribbean Queen" in 1984.
-
-- Emphasized sharing the same dream
-- Hearts beating as one
-
-"Caribbean Queen" is about the poor execution of Operation Urgent Fury.
-
-- Echoed JCS chairman David Jones' frustrations with military establishment.
-
-Billy Ocean is advocating for what became the Goldwater-Nichols Act.
-
-- Wanted to take advantage of **economies of scale**, resolve **coordination problems** in U.S. military.
-
-## The Good Day Hypothesis
-
-We know the following about Ice Cube's day.
-
-1. The Lakers beat the Supersonics.
-2. No helicopter looked for a murder.
-3. Consumed Fatburger at 2 a.m.
-4. Goodyear blimp: "Ice Cube's a pimp."
-
-This leads to two different hypotheses:
-
-- $H_0$: Ice Cube's day is statistically indistinguishable from a typical day.
-- $H_1$: Ice Cube is having a good (i.e. greater than average) day.
-
-These hypotheses are tested using archival data of Ice Cube's life.
-
-# Example R code
-## Example R stuff
-
-```{r cars, echo = TRUE}
-summary(cars)
-```
-
-## Slide with Plot
-
-```{r pressure}
-plot(pressure)
-```
-
-## ggplot code
-
-```{r createdata, echo=TRUE, eval=FALSE}
-df <- data.frame(x = rnorm(1000))
-x <- df$x
-base <- ggplot(df, aes(x)) + geom_density()  + scale_x_continuous(limits = c(-5, 5))
-base + stat_function(fun = dnorm, colour = "red")
-```
+* __Definition:__ a financial instrument that has a value determined by the price of something else
 
 
-## Another Plot
-
-```{r plotit, echo=FALSE}
-library(ggplot2)
-df <- data.frame(x = rnorm(1000))
-x <- df$x
-base <- ggplot(df, aes(x)) + geom_density()  + scale_x_continuous(limits = c(-5, 5))
-base + stat_function(fun = dnorm, colour = "red")
-```
+* An agreement where you pay $\$1$ if the price of corn is greater than $\$3$ and receive $\$1$ if the
+  price of corn is less than $\$1$ is a derivative
+	- This contract can be used to speculate on the price of corn or it can be used to reduce risk. It
+	  is not the contract itself, but how it used, and who uses it, that determines whether or not it is
+	  risk-reducing.
 
 
-## Python and R Code
+## An Overview of Financial Markets
 
-- Some Python code:
+The trading of a financial asset involves at least four discrete steps:
 
-	```{python}
-	print("Hello, World!")
-	```
+* A buyer and a sellter must locate one another and agree on a price
 
-- Some R code:
+* The trade must be _cleared_ (the obligations of each party are specified)
 
-	```{r}
-	print(paste("Hello, ", "World!", sep=""))
-	```
+* The trade must be _settled_ (the buyer and the seller must deliver the cash
+  or securities necessary to satisfy their obligations in the required period
+  of time)
 
+* Ownership records are updated 
+
+\vspace{3mm}
+
+___NB:___ notice that well-defined property rights are an assumption of 
+properly functioning capital markets.
+
+
+## An Overview of Financial Markets (Continued)
+
+* Much trading of financial claims takes place on organized exchanges. In the past, the exchange
+  was solely a physical location where traders would buy and sell. Such in-person venues have 
+  largely been replaced by electronic networks that provide a virtual trading venue. 
+
+* After a trade has taken place, a __clearinghouse__ matches the buyers and sellers, keeping
+  track of their obligations and payments. To facilitate these payments and to help manage 
+  credit risk, a derivatives clearinghouse typically imposes itself in the transaction, becoming
+  the buyer to all sellers and the seller to all buyers. 
+
+
+## An Overview of Financial Markets (Continued)
+
+* It is possible for large traders to trade many financial claims directly with a dealer bypassing
+  organized exchanges. Such trading is said to occur in the __over-the-counter__ (OTC) market
+
+* Exchange activity is public and highly regulated
+
+* OTC trading is not easy to observe or measure and is generally less regulated
+
+* For many categories of financial claims, the value of OTC trading is greater than the value traded
+  on exchanges.
+
+
+## An Overview of Financial Markets (Continued)
+
+There are at least four different measures of a market and its activity
+
+*  __Trading volume__. This measure counts 
+
+* __Market value__. 
+
+
+* __Notional value__.
+
+
+* __Open Interest__.
 
 
 
