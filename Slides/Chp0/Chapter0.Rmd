@@ -284,6 +284,32 @@ goes long the asset and short the reference rate with no initial investment.
 
 # Price Disovery in Financial Markets
 
+## The Role of Prices
+
+__Customer:__ How much are these?
+
+__Merchant:__ A buck fifty.
+
+__Customer:__ I'll take some.
+
+__Merchant:__ They're a buck fifty-one.
+
+__Customer:__ Um, you said a buck fifty.
+
+__Merchant:__ That was before I knew you wanted some.
+
+__Customer:__ You can't do that. 
+
+__Merchant:__ It's my shop.
+
+__Customer:__ But I need to buy a hundred!
+
+__Merchant:__ A hundred? Then it's a buck fifty-two.
+
+__Customer:__ You're ripping me off.
+
+__Merchant:__ Supply and demand, pal. You want 'em or not?
+
 ## The Price Mechanism
 
 The ___Price Mechansim:___ Used with reference to the free market system and the way
