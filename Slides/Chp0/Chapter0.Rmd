@@ -8,9 +8,9 @@ fontsize: 10pt
 output:
  beamer_presentation:
     template: ./beamer-template.tex
-    keep_tex: true
-# toc: true
-    slide_level: 2
+    keep_tex: false
+    toc: true
+#    slide_level: 2
  ioslides_presentation:
     smaller: true
 #    logo: ~/Dropbox/teaching/clemson-paw-transparent.png
@@ -280,3 +280,27 @@ goes long the asset and short the reference rate with no initial investment.
 * Present and future values:
 	- $A = C \exp{(r \times n)}$
 	- $C = A \exp{(-r \times n)}$
+
+
+# Price Disovery in Financial Markets
+
+## The Price Mechanism
+
+The ___Price Mechansim:___ Used with reference to the free market system and the way
+in which prices act as automatic signals which coordinate the actions of individual
+decision making units. By means of this role, the price system provides a mechanism
+whereby changes in demand and supply conditions can affect the _allocative efficiency_
+of resources.
+
+
+## Price Disovery
+
+___Price Discovery___ is the process whereby information is incorporated into prices
+through the trading process via the price mechanism. Buyers seek the lowest possible
+prices whilst sellers seek the highest possible prices. Both are constrained by supply 
+and demand conditions prevalent in the market. Traders seek to gain advantage from 
+their information and thereby cause prices to become informative through their trading. 
+
+\vspace{2.5mm}
+
+See the following defition at the [CFTC](https://www.cftc.gov/ConsumerProtection/EducationCenter/CFTCGlossary/index.htm#P).
