@@ -8,9 +8,9 @@ fontsize: 10pt
 output:
  beamer_presentation:
     template: ./beamer-template.tex
-    keep_tex: true
-# toc: true
-    slide_level: 2
+    keep_tex: false
+    toc: true
+#    slide_level: 2
  ioslides_presentation:
     smaller: true
 #    logo: ~/Dropbox/teaching/clemson-paw-transparent.png
@@ -67,78 +67,287 @@ padding-bottom: 10px;
 </style>
 
 
-# Chapter 1: Introduction to Derivatives
+# Section 1: Time-Series Models 
 
-## What is a Derivative? 
+## The Tradition Use of Time Series Models Was for Forecasting
 
-* __Definition:__ a financial instrument that has a value determined by the price of something else
+If we know
 
+$$
+y_{t+1} = a_{0} + a_{1} y_{t} + \varepsilon_{t+1}
+$$
 
-* An agreement where you pay $\$1$ if the price of corn is greater than $\$3$ and receive $\$1$ if the
-  price of corn is less than $\$1$ is a derivative
-	- This contract can be used to speculate on the price of corn or it can be used to reduce risk. It
-	  is not the contract itself, but how it used, and who uses it, that determines whether or not it is
-	  risk-reducing.
+then 
 
+$$
+E_{t}(y_{t+2}) = a_{0} + a_{1} y_{t}
+$$
 
-## An Overview of Financial Markets
+and since 
 
-The trading of a financial asset involves at least four discrete steps:
-
-* A buyer and a sellter must locate one another and agree on a price
-
-* The trade must be _cleared_ (the obligations of each party are specified)
-
-* The trade must be _settled_ (the buyer and the seller must deliver the cash
-  or securities necessary to satisfy their obligations in the required period
-  of time)
-
-* Ownership records are updated 
-
-\vspace{3mm}
-
-___NB:___ notice that well-defined property rights are an assumption of 
-properly functioning capital markets.
+$$
+\begin{aligned}
+y_{t+2}        &= a_{0} + a_{1}y_{t+1} + \varepsilon_{t+2} \\
+E_{t}(y_{t+2}) &= a_{0} + a_{1} E_{t}(y_t+1)               \\
+               &= a_{0} + a_{1}(a_{0} + a_{1} y_{t})       \\
+			   &= a_{0} + a_{1}a_{0} + (a_{1})^{2} y_{t}     \\
+\end{aligned}
+$$
 
 
-## An Overview of Financial Markets (Continued)
+## Capturing Dynamic Relationships
 
-* Much trading of financial claims takes place on organized exchanges. In the past, the exchange
-  was solely a physical location where traders would buy and sell. Such in-person venues have 
-  largely been replaced by electronic networks that provide a virtual trading venue. 
+* With the advent of modern dynamic economic models, the newer uses of time series models involve
+	- Capturing dynamic economic relationships
+	- Hypothesis testing
 
-* After a trade has taken place, a __clearinghouse__ matches the buyers and sellers, keeping
-  track of their obligations and payments. To facilitate these payments and to help manage 
-  credit risk, a derivatives clearinghouse typically imposes itself in the transaction, becoming
-  the buyer to all sellers and the seller to all buyers. 
-
-
-## An Overview of Financial Markets (Continued)
-
-* It is possible for large traders to trade many financial claims directly with a dealer bypassing
-  organized exchanges. Such trading is said to occur in the __over-the-counter__ (OTC) market
-
-* Exchange activity is public and highly regulated
-
-* OTC trading is not easy to observe or measure and is generally less regulated
-
-* For many categories of financial claims, the value of OTC trading is greater than the value traded
-  on exchanges.
+* Developing "stylized facts"
+	- In a sense, this reverses the so-called scientific method in that modeling goes from developing
+	  models that follow from the data
 
 
-## An Overview of Financial Markets (Continued)
+## The Random Walk Hypothesis
 
-There are at least four different measures of a market and its activity
+$$
+y_{t+1} = y_{t} + \varepsilon_{t}
+$$
 
-*  __Trading volume__. This measure counts 
+or 
 
-* __Market value__. 
+$$
+\Delta y_{t+1} = \varepsilon_{t}
+$$
+
+_where_ $y_{t} =$ the price of a share of stock on day $t$ , and $\varepsilon_{t} =$ a random 
+disturbance term that has an expected value of zero.
+
+Now consider the more general stochastic difference equation
+
+$$
+\Delta y_{t+1} = a_{0} + a_{1} y_{t} + \varepsilon_{t+1}
+$$
+
+The random walk hypothesis requires the testable restriction: 
+
+$$
+a_{0} = a_{1} = 0
+$$
 
 
-* __Notional value__.
+## The Unbiased Forward Rate (UFR) Hypothesis
+
+Given the UFR hypothesis, the following forward/spot exchange rate relationship is: 
+
+$$
+s_{t+1} = f_{t} + \varepsilon_{t+1}
+$$
+
+where $\varepsilon_{t+1}$ has a mean value of zero from the perspective of time period
+$t$. Consider the regression
+
+$$
+s_{t+1} = a_{0} + a_{1} f_{t} + \varepsilon_{t+1}
+$$
+
+The hypothesis requires $a_{0} = 0, a_{1} = 1$, and that the regression residuals 
+$\varepsilon{t+1}$ have mean value of zero from the perspective of time period $t$.
+
+The spot and forward markets are said to be in _long-run equilibrium_ when
+$\varepsilon_{t+1} = 0$. Whenever, $s_{t+1}$ turns out to differ from $f_{t}$,
+some sort of equilibrium adjustment must occur to restore the equilibrium in the
+subsequent period. Consider the adjustment process
+
+$$
+\begin{aligned}
+s_{t+2} &= s_{t+1} - a[s_{t+1} - f_{t}] + \varepsilon_{s, t+2} \quad a > 0 \\
+f_{t+1} &= f_{t} + b[s_{t+1} - f_{t}] + \varepsilon_{f, t+1} \quad b > 0 \\
+\end{aligned}
+$$
+
+where $\varepsilon_{s, t+2}$ and $\varepsilon_{f, t+1}$ both have an expected
+value of zero.
 
 
-* __Open Interest__.
+## Trend-Cycle Relationships
+
+* We can think of a time series as being composed of: 
+
+$$
+y_{t} = \mbox{trend} + \mbox{"cycle"} + \mbox{noise}
+$$
+
+* Trend: permanent
+* Cycle: predictable (albeit temporary)
+	- (Deviations from trend)
+* Noise: unpredictable
 
 
+# Section 2: Difference Equations and Their Solutions
 
+## Consider the Function $y_{t^{\ast}} = f(t^{\ast})$
+
+$$
+\begin{aligned}
+\Delta y_{t^{\ast} + h} &\equiv f(t^{\ast} + h) - f(t^{\ast}) \\
+                        &\equiv y_{t^{\ast} + h} - y_{t^{\ast}} \\
+\end{aligned}
+$$
+
+We can then form the __first differences:__
+
+$$
+\begin{aligned}
+\Delta y_{t}   &= f(t)   - f(t-1) \equiv y_{t} - y_{t-1}   \\
+\Delta y_{t+1} &= f(t+1) - f(t)   \equiv y_{t+1} - y_{t}   \\
+\Delta y_{t+2} &= f(t+2) - f(t+1) \equiv y_{t+2} - y_{t+1} \\
+\end{aligned}
+$$
+
+More generally, for the forcing process $x_{t}$ a $n$-th order linear process is
+
+$$
+y_{t} = a_{0} + \sum\limits_{i=1}^{n} a_{i} y_{t-i} + x_{t}
+$$
+
+
+## What is a Solution?
+
+A __solution__ to a difference equation expresses the value of $y_{t}$ as a function
+of the elements of the ${x_{t}}$ sequence and $t$ (and possibly some given values of the
+${y}$ sequence called __initial conditions__).
+
+$$
+y_{t} = a_{0} + \sum\limits_{i=1}^{n} a_{i} y_{t-i} + x_{t}
+$$
+
+The key property of a solution is that it satisfies the difference equation for all 
+permissible values of $t$ and ${x_{t}}$.
+
+
+## Solution by Iteration
+
+Consider the first-order equation
+
+$$
+y_{t} = a_{0} + a_{1} y_{t-1} + \varepsilon_{t}
+$$
+
+Given the value of $y_{0}$, it follows that $y_{1}$ will be given by
+
+$$
+y_{1} = a_{0} + a_{1} y_{0} + \varepsilon_{1}
+$$
+
+In the same way, $y_{2}$ must be
+
+$$
+\begin{aligned}
+y_{2} &= a_{0} + a_{1} y_{1} + \varepsilon_{2} \\
+      &= a_{0} + a_{1} [a_{0} + a_{1} y_{0} + \varepsilon_{1}] + \varepsilon_{2} \\
+	  &= a_{0} + a_{0} a_{1} + (a_{1})^{2} y_{0} + a_{1} \varepsilon_{1} + \varepsilon_{2} \\
+\end{aligned}
+$$
+
+Continuing the process in order to find $y_{3}$, we obtain
+
+$$
+\begin{aligned}
+y_{3} &= a_{0} + a_{1} y_{2} + \varepsilon_{3} \\
+      &= a_{0} [1 + a_{1} + (a_{1})^{2}] + (a_{1})^{3} y_{0} + a_{1}^{2} \varepsilon_{1} + a_{1} \varepsilon_{2} + \varepsilon_{3}
+\end{aligned}
+$$
+
+
+##
+
+From 
+
+$$
+y_{3} = a_{0} [1 + a_{1} + (a_{1})^{2}] + (a_{1})^{3} y_{0} + a_{1}^{2} \varepsilon_{1} + a_{1} \varepsilon_{2} + \varepsilon_{3}
+$$
+
+you can verify that for $t > 0$, repeated iteration yields
+
+$$
+y_{t} = a_{0} \sum\limits_{i=0}^{t-1} a_{i}^{i} + a_{1}^{i} y_{0} + \sum\limits_{i=0}^{t-1} a_{i}^{i} \varepsilon_{t-i}
+$$
+
+If $|a_{1}| < 1$, in the limit
+
+$$
+y_{t} = a_{0} / (1 - a_{1}) + \sum\limits_{i=0}^{\infty} a_{1}^{i} \varepsilon_{t-i}
+$$
+
+
+## Backwards Iteration
+
+Iteration from $y_{t}$ back to $y_{0}$ yields exactly the formula given by (above).
+
+Since $y_{t} = a_{0} + a_{1} y_{t-1} + \varepsilon_{t}$, it follows that
+
+$$
+\begin{aligned}
+y_{t} &= a_{0} + a_{1} [a_{0} + a_{1} y_{t-2} + \varepsilon_{t-1}] + \varepsilon_{t} \\
+      &= a_{0}(1 + a_{1}) + a_{1} \varepsilon_{t-1} + \varepsilon_{t} + a_{1}^{2} [a_{0} + a_{1} y_{t-3} + \varepsilon_{t-2}]
+\end{aligned}
+$$
+
+If $|a_{1}| < 1$, in the limit
+
+$$
+y_{t} = a_{0}/(1 - a_{1}) + \sum\limits_{i=0}^{\infty} a_{1}^{i} \varepsilon_{t-i}
+$$
+
+
+# Section 9: Lag Operators
+
+## Lag Operators
+
+The lag operator $L$ is defined to be:
+
+$$
+L^{i} y_{t} = y_{t-i}
+$$
+
+Thus, $L^{i}$ preceding $y_{t}$ simply means to lag $y_{t}$ by $i$ periods.
+
+The lag of a constant is a constant: $Lc = c$.
+
+The distributive law holds for lag operators. We can set: 
+
+$$
+(L^{i} + L^{j}) y_{t} = L^{i} y_{t} + L^{j} y_{t} = y_{t-i} + y_{t-j}
+$$
+
+
+## Lag Operators (Continued)
+
+* Lag operators provide a concise notation for writing difference 
+  equations. Using lag operators, the $p$-th order equation
+
+$$
+y_{t} = a_{0} + a_{1} y_{t-1} + \ldots + a_{p} y_{t-p} + \varepsilon_{t}
+$$
+
+can be written as:
+
+$$
+(1 - a_{1} L - a{2} L^{2} - \ldots - a_{p} L^{p}) y_{t} = \varepsilon_{t}
+$$
+
+or more compactly as:
+
+$$
+A(L) y_{t} = \varepsilon_{t}
+$$
+
+As a second example, 
+
+$$
+\begin{aligned}
+y_{t} &= a_{0} + a_{1} y_{t-1} + \ldots + a_{p} y_{t-p} + \varepsilon_{t} + \beta_{1} \varepsilon_{t-1} + \ldots + \beta_{q} \varepsilon_{t-q} \\
+      &= A(L) y_{t} + B(L) \varepsilon_{t}
+\end{aligned}
+$$
+
+where: $A(L)$ and $B(L)$ are polynomials of orders $p$ and $q$ respectively. 
