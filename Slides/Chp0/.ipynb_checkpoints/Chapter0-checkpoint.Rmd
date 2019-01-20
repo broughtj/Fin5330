@@ -1,0 +1,332 @@
+---
+title: Finance 5330 - Financial Econometrics
+subtitle: Prices, Returns and Price Discovery 
+author: Tyler J. Brough
+institute: Department of Finance and Economics 
+titlegraphic: ./images/vertical-logo-blue.png
+fontsize: 10pt
+output:
+ beamer_presentation:
+    template: ./beamer-template.tex
+    keep_tex: false
+    toc: true
+#    slide_level: 2
+ ioslides_presentation:
+    smaller: true
+#    logo: ~/Dropbox/teaching/clemson-paw-transparent.png
+make149: true
+---
+
+<style>
+slides > slide.backdrop {
+  background: white;
+  border-bottom: 0px;
+  box-shadow: 0 0 0;
+}
+
+
+slides > slide {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  border-bottom: 3px solid  #F66733;
+  box-shadow:  0 3px 0 #00488D;
+
+}
+
+.title-slide hgroup h1 {
+  color: #00488D;
+}
+
+
+
+h2 {
+
+  color: #00488D;
+}
+
+slides > slide.dark {
+  background: #00488D !important;
+  border-bottom: 0;
+  box-shadow: 0 0 0;
+}
+
+.segue h2 {
+  color: white;
+}
+
+slides > slide.title-slide {
+  border-bottom: 0;
+  box-shadow: 0 0 0;
+}
+
+ol, ul {
+
+padding-bottom: 10px;
+
+}
+
+</style>
+
+
+# Introduction to Financial Data: Price and Returns
+
+## Asset Returns
+
+__One-Period Simple Return__
+
+* Hold asset from period $t-1$ to $t$ 
+
+* Simple Gross Return:
+
+$$
+1 + R_{t} = \frac{P_{t}}{P_{t-1}}
+$$
+
+or
+
+$$
+P_{t} = P_{t-1} (1 + R_{t})
+$$
+
+
+## Multiperiod Simple Return
+
+* Holding the asset $k$ period between dates $t-k$ and $t$ gives a $k\mbox{-period}$ gross return:
+
+$$
+\begin{aligned}
+1 + R_{t}[k] &= \frac{P_{t}}{P_{t-k}} = \frac{P_{t}}{P_{t-1}} \frac{P_{t-1}}{P_{t-2}} \cdots \frac{P_{t-k+1}}{P_{t-k}} \\
+             &= (1 + R_{t}) (1 + R_{t-1}) \cdots (1 + R_{t-k+1}) \\
+			 &= \prod_{j=0}^{k-1} (1 + R_{t-j})
+\end{aligned}
+$$
+
+* ___NB:___  the $k\mbox{-period}$ simple gross return is the product of the $k$ one-period simple gross returns. This is called
+  a compound return. 
+
+* The $k\mbox{-period}$ simple net return is: $R_{t}[k] = \frac{P_{t} - P_{t-k}}{P_{t-k}}$
+
+
+## Annualized Returns 
+
+* To facilitate comparison we usually standardize to a given duration (annual, monthly, quarterly, etc)
+
+* The annual return is 
+
+$$
+\mbox{Annualized}\{R_{t}[k]\} = \left[ \prod_{j=0}^{k-1} (1 + R_{t-j}) \right]^{1/k} - 1
+$$
+
+* ___NB:___ this is a geometric mean of the $k$ one-period simple gross returns
+
+* It can also be computed as 
+
+$$
+\mbox{Annualized}\{R_{t}[k]\} = \exp{\left[\frac{1}{k} \sum\limits_{j=0}^{k-1} \ln{(1 + R_{t-j})} \right]} - 1
+$$
+
+
+## Continuous Compounding
+
+For continuous compounding we can use the following formula: 
+
+$$
+A = C \exp{(r \times n)}
+$$
+
+where
+
+- $A =$ net asset value
+
+- $C =$ initial capital
+
+- $r =$ interest rate per annum
+
+- $n =$ number of years
+
+
+With this in mind, we can also define the ___present value___ relation:
+
+$$
+C = A \exp{(-r \times n)}
+$$
+
+
+## Continuously Compounded Return
+
+- The natural log of the simple gross return
+
+$$
+r_{t} = \ln{(1 + R_{t})} = \ln{\frac{P_{t}}{P_{t-1}}} = \ln{P_{t}} - \ln{P_{t-1}}
+$$
+
+
+* Advantages
+	- Multiperiod returns
+
+$$
+\begin{aligned}
+r_{t}[k] &= \ln{(1 + R_{t}[k])} \\
+         &= \ln{\left[(1 + R_{t}) (1 + R_{t-1}) \cdots (1 + R_{t-k+1})\right]} \\
+		 &= \ln{(1 + R_{t})} + \ln{(1 + R_{t-1})} + \cdots + \ln{(1 + R_{t-k+1})} \\
+		 &= r_{t} + r_{t-1} + \cdots + r_{t-k+1} 
+\end{aligned}
+$$
+
+
+## Continously Compounded Return (Continued)
+
+
+* Symmetric up/down moves
+
+* Set up some imaginary prices
+
+```{python}
+p1 = 100.0
+p2 = 105.0
+p3 = 100.0
+```
+
+## Continously Compounded Return (Continued)
+* The simple net return
+
+```{python}
+R2 = p2/p1 - 1.0
+print(R2)
+R3 = p3/p2 - 1.0
+print(R3)
+```
+
+
+## Continously Compounded Return (Continued)
+
+* Continously compounded prices
+
+```{python}
+import numpy as np
+r2 = np.log(p2) - np.log(p1)
+print(r2)
+r3 = np.log(p3) - np.log(p2)
+print(r3)
+```
+
+
+## Portfolio Returns
+
+$$
+R_{p,t} = \sum\limits_{i=1}^{N} \omega_{i} R_{i,t}
+$$
+
+where
+
+* $p =$ index representing the portfolio 
+
+* $N =$ number of assets in the portfolio
+
+* $R_{i,t} =$ period $t$ simple net return on aset $i$
+
+* $\omega_{i} =$ weight on asset $i$
+
+
+___NB:___ continously compounded portfolio returns do not have this convenient property,
+but for simple returns $R_{i,t}$ small in magnitude, we have
+
+$$
+r_{p,t} \approx \sum\limits_{i=1}^{N} \omega_{i} r_{i,t}
+$$
+
+
+## Accounting for Dividend Payments
+
+* We often have to account for dividends
+
+$$
+R_{t} = \frac{(P_{t} + D_{t})}{P_{t-1}} - 1
+$$
+
+$$
+r_{t} = \ln{(P_{t} + D_{t})} - \ln{P_{t-1}}
+$$
+
+
+## Excess Return
+
+$$
+Z_{t} = R_{t} - R_{0,t}
+$$
+
+where $R_{0,t}$ is a reference asset (e.g. the risk-free rate)
+
+$$
+z_{t} = r_{t} - r_{0,t}
+$$
+
+
+___NB:___ Excess return can be thought of as the payoff to an arbitrage strategy that
+goes long the asset and short the reference rate with no initial investment.
+
+
+## Summary of Relationships
+
+* $r_{t} = \ln{(1 + R_{t})} \implies R_{t} = \exp{(r_{t})} - 1$
+
+* If $R_{t}$ and $r_{t}$ are in percentages then
+	- $r_{t} = 100 \ln{\left(1 + \frac{R_{t}}{100}\right)}$
+	- $R_{t} = 100 \left(e^{r_{t}/100} - 1 \right)$
+
+* Temporal aggregation produces
+	- $1 + R_{t}[k] = (1 + R_{t}) (1 + R_{t-1}) \cdots (1 + R_{t-k+1})$
+	- $r_{t}[k] = r_{t} + r_{t-1} + \cdots + r_{t-k+1}$
+
+* Present and future values:
+	- $A = C \exp{(r \times n)}$
+	- $C = A \exp{(-r \times n)}$
+
+
+# Price Disovery in Financial Markets
+
+## The Role of Prices
+
+__Customer:__ How much are these?
+
+__Merchant:__ A buck fifty.
+
+__Customer:__ I'll take some.
+
+__Merchant:__ They're a buck fifty-one.
+
+__Customer:__ Um, you said a buck fifty.
+
+__Merchant:__ That was before I knew you wanted some.
+
+__Customer:__ You can't do that. 
+
+__Merchant:__ It's my shop.
+
+__Customer:__ But I need to buy a hundred!
+
+__Merchant:__ A hundred? Then it's a buck fifty-two.
+
+__Customer:__ You're ripping me off.
+
+__Merchant:__ Supply and demand, pal. You want 'em or not?
+
+## The Price Mechanism
+
+The ___Price Mechansim:___ Used with reference to the free market system and the way
+in which prices act as automatic signals which coordinate the actions of individual
+decision making units. By means of this role, the price system provides a mechanism
+whereby changes in demand and supply conditions can affect the _allocative efficiency_
+of resources.
+
+
+## Price Disovery
+
+___Price Discovery___ is the process whereby information is incorporated into prices
+through the trading process via the price mechanism. Buyers seek the lowest possible
+prices whilst sellers seek the highest possible prices. Both are constrained by supply 
+and demand conditions prevalent in the market. Traders seek to gain advantage from 
+their information and thereby cause prices to become informative through their trading. 
+
+\vspace{2.5mm}
+
+See the following defition at the [CFTC](https://www.cftc.gov/ConsumerProtection/EducationCenter/CFTCGlossary/index.htm#P).
