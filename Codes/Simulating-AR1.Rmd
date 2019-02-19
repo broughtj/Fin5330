@@ -1,0 +1,97 @@
+---
+title: "Linear Time Series Residual Bootstrap"
+author: "Tyler J. Brough"
+date: "February 7, 2019"
+output: html_document
+---
+
+```{r}
+phi = 0.75
+n = 1000
+x = rep(0,n)
+
+x[1] <- rnorm(1)
+u <- rnorm(n)
+
+for(t in 2:n) {
+  x[t] = phi * x[t-1] + u[t]
+}
+
+plot(x, col="purple", type="l")
+```
+
+
+Now hand data to statistician.
+
+```{r}
+Y <- x[2:n]
+X <- x[1:(n-1)]
+
+reg <- lm(Y ~ X)
+```
+
+
+## The (Parametric) Monte Carlo Approach
+
+```{r}
+simAR1 <- function(phiHat, y0, size) {
+  y <- rep(0, size)
+  y[1] <- phiHat * y0 + rnorm(1)
+  u <- rnorm(size)
+  
+  for(t in 2:size) {
+   y[t] <- phiHat * y[t-1] + u[t]
+  }
+  
+  y
+}
+
+m = 1000
+phiEst = rep(0, m)
+phiHat = coef(reg)[[2]]
+y0 <- x[1]
+
+for(i in 1:m) {
+  ysim <- simAR1(phiHat, y0, n)
+  Y <- ysim[2:n]
+  X <- ysim[1:(n-1)]
+  phiEst[i] <- coef(lm(Y ~ X))[[2]]
+}
+
+hist(phiEst)
+```
+
+
+
+Let's bootstrap this.
+
+
+```{r}
+simAR1Bootstrap <- function(phiHat, resids, y0, size) {
+  y <- rep(0, size)
+  
+  u <- sample(resids, size, replace=TRUE)
+  y[1] <- phiHat * y0 + u[1]
+  
+  for(t in 2:size) {
+   y[t] <- phiHat * y[t-1] + u[t]
+  }
+  
+  y
+}
+
+m = 10000
+phiEst = rep(0, m)
+phiHat = coef(reg)[[2]]
+resids <- reg$residuals
+y0 <- x[1]
+
+for(i in 1:m) {
+  ysim <- simAR1Bootstrap(phiHat, resids, y0, n)
+  Y <- ysim[2:n]
+  X <- ysim[1:(n-1)]
+  phiEst[i] <- coef(lm(Y ~ X))[[2]]
+}
+
+hist(phiEst)
+```
