@@ -1,0 +1,102 @@
+---
+title: "FIN 5330 - Homework 2"
+author: "Tyler J. Brough"
+date: "February 19, 2019"
+output: pdf_document
+---
+
+## __Problem 1__
+
+<br>
+
+1. Simulate $T = 500$ observations from an AR(1) process for $\phi = \{0.25, 0.5, 0.75, 0.8, 0.9\}$. 
+
+   $$y_{t} = \phi y_{t-1} + \epsilon_{t}$$
+
+2. Treat the artificial from the simulations above as observed data by an econometrician. 
+
+3. Estimate each model via OLS.
+
+4. Test the standard null hypothesis of $\phi = 0$ with a standard $t$-test for significance levels
+  $\{0.01, 0.05, 0.10\}$ for each one and report the results in a table. Provide test statistics,
+  standard errors, critical values, p-values, etc.
+
+5. Pick one of the parameter values for the models above and do the following: 
+    * Use the Central Limit Theorem to derivive a sampling distribution for $\hat{\phi}$. Present
+      the parameter values of the sampling distribution. Produce a graph of the distribution.
+    * Use parametric Monte Carlo to simulate the sampling distribution. Use $M = 10,000$ repititions.
+      Use the sample mean and standard deviation to estimate the parameter values of the distribution.
+      Produce a histogram.
+    * Use the IID Bootstrap to simulate the sampling distribution. Use $B = 10,000$ repititions. 
+      Use the sample mean and standard deviation to estimate the parameter values of the 
+      distribution. Produce a histogram.
+    * Compare all three methods. 
+    * Can you interpret the last two distributions as predictive densities?
+
+6. Return to the problem in 5 above and redo the simulation from step one, but replace the error distribution
+   with a Student-T distribution with $df = 5$ (degrees of freedom parameter). Even though we know at the generation
+   stage that the errors come from the Student-T distribution, the econometrician assumes a normal distribution when
+   using the CLT and parametric Monte Carlo. The bootstrap obviously does not need to make such assumptions. Compare
+   to the results above. 
+
+<br>
+
+## __Problem 2__
+
+<br>
+
+- Simulate $T = 500$ time steps for the following two equations:
+
+   $$\begin{aligned} y_{t} &= y_{t-1} + u_{1,t} \\ x_{t} &= x_{t-1} + u_{2,t} \end{aligned} $$
+
+- where $u_{j,t} \quad j = 1,2$ are independent standard white noise processes.
+
+- Next regress $y_{t}$ on $x_{t}$ and estimate $\beta$ (slope coefficient) via OLS in the following regression
+
+   $$y_{t} = \alpha + \beta x_{t} + \epsilon_{t}$$
+
+- Test the null hypothesis $H_{0}: \beta = 0$ against the alternative $H_{a}: \beta \ne 0$. Use the standard $t$-test
+  with standard significance levels (0.01, 0.05, and 0.10). What should you find? What do you find?
+
+- Repeat the process $M = 50,000$ times and store the $\beta$ coefficients for each run of the simulation. 
+
+- Summarize the simulated sampling distribution for $\beta$. 
+
+- Make a histogram plot of the simulated coefficients. 
+
+<br>
+
+## __Problem 3__
+
+<br>
+
+- Repeat the exercise in Problem 1 above for $\phi = 1.0$.
+
+- Comment on your findings.
+
+<br>
+
+## __Problem 4__
+
+<br>
+
+- Simulate $T = 500$ time steps from the random walk model 
+  
+	$$x_{t} = x_{t-1} + u_{1,t}$$
+
+- Next simulate $T = 500$ time steps from the model 
+
+	$$y_{t} = \alpha + \beta x_{t} + \epsilon_{t}$$
+
+- Where $\alpha = 0.22$ and $\beta = 2.50$. 
+
+- $\epsilon \sim N(0,1)$ (white noise process)
+
+- Use the Augmented Dickey-Fuller Test to check for the presence of a unit-root in both $y_{t}$ and $x_{t}$. What do you find? What should
+  you find? 
+
+- Implement the Engle-Granger two-step method by:
+	- First, test for cointegration by submitting $\hat{\epsilon}_{t}$ to the ADF Test. What do you find?
+	- Obtain $\hat{\beta}$ via OLS. 
+	- Estimate the error-correction model with $p = 1$ and include contemporaneous $x_{t}$.
+

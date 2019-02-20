@@ -1,0 +1,14 @@
+---
+title: "FIN 5330 I"
+author: "Tyler J. Brough"
+date: "February 19, 2019"
+output: pdf_document
+---
+
+- Replicate the pairs trading results in the paper _Illuminating the Profitability of Pairs Trading: A Test of the Relative Pricing Efficiency of Markets for Water Utility Stocks._
+
+- Use the historical data in the accompanying file _WaterStocks.csv_.
+
+- Use the BIC criteria for the number of lags to use in all ADF tests. Consider a max number of lags equal to 10.
+
+- Submit your work as either a Jupyter Notebook with Python code or an R Markdown notebook with R code. 
