@@ -1,0 +1,66 @@
+---
+title: "Cointegration"
+author: "Tyler J. Brough"
+date: "February 28, 2019"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+## Spurious Regression
+
+```{r}
+N <- 500
+M <- 50000
+beta <- rep(0, M)
+rsqr <- rep(0, M)
+
+for(i in 1:M) {
+  y <- cumsum(rnorm(N))
+  x <- cumsum(rnorm(N))
+  fit <- lm(y ~ x)
+  beta[i] <- fit$coefficients[2]
+  rsqr[i] <- summary(fit)$r.squared
+}
+```
+
+
+```{r}
+hist(beta, breaks=50, col="purple")
+```
+
+
+```{r}
+hist(rsqr, breaks=50, col="orange")
+```
+
+
+## Cointegration and Error-Correction
+
+
+```{r}
+N <- 500
+a <- 0.22
+b <- 2.5
+u <- rnorm(N)
+x <- cumsum(rnorm(N))
+y <- a + b * x + u
+fit <- lm(y ~ x)
+z <- fit$residuals
+```
+
+
+```{r}
+Dy <- diff(y)
+Dx <- diff(x)
+fit <- lm(Dy[3:N] ~ z[3:N] + Dy[2:(N-1)] + Dx[2:(N-1)])
+summary(fit)
+```
+
+
+
+
+
+
+
+
