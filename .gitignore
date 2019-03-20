@@ -1,1 +1,3 @@
 *.ipython_checkpoints
+*.RData
+*.RHistory
