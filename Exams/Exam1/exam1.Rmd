@@ -5,6 +5,9 @@ date: "February 19, 2019"
 output: pdf_document
 ---
 
+
+## Outline
+
 - Replicate the pairs trading results in the paper _Illuminating the Profitability of Pairs Trading: A Test of the Relative Pricing Efficiency of Markets for Water Utility Stocks._
 
 - Use the historical data in the accompanying file _WaterStocks.csv_.
@@ -12,3 +15,58 @@ output: pdf_document
 - Use the BIC criteria for the number of lags to use in all ADF tests. Consider a max number of lags equal to 10.
 
 - Submit your work as either a Jupyter Notebook with Python code or an R Markdown notebook with R code. 
+
+
+__Update:__ March 22, 2019
+
+- I decided that you could take another month trying to get the exact replication of the paper's trading
+  strategy implementation. I don't want you to spin your wheels on a lost cause. So here is what I want
+  you to do instead. 
+
+- Estimate equation (6) in the paper for each of your pairs. Then form the residuals as outlined (see
+  equations (7) and (8) in the paper). 
+
+- Esimate $\sigma_{\epsilon}$ from the estimated residuals. 
+
+- Calculate the upper and lower bounds for the trading rules as: 
+
+$$
+\begin{aligned}
+\mbox{UpperBound} &= +1.0 * \delta_{i} \hat{\sigma_{\epsilon}} \\
+\mbox{LowerBound} &= -1.0 * \delta_{i} \hat{\sigma_{\epsilon}} \\
+\end{aligned}
+$$
+
+- for $i = \{1, 2, 3\}$ and $\delta = \{0.25, 0.5, 0.75\}$ as in the paper. 
+
+- Make three time series graphs with the residuals plotted against the upper and lower bounds for each 
+  $\delta_{i}$. 
+
+- Fill in the following table with the number of buy and sell signals for each trading rule:
+
+\vspace{5mm}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{lcc}
+$\delta_{i}$ & Buy Signals & Sell Signals \\
+\hline
+\hline
+      &  &    \\
+0.25  &  &    \\
+\hline \\
+0.50  &  &    \\
+\hline \\
+0.75  &  &    \\
+\hline
+\end{tabular}
+\end{table}
+
+
+\vspace{2.5mm}
+
+- Explain what a _buy signal_ and a _sell signal_ means in the context of pairs trading. 
+
+- For example, identify the first buy and the first sell signals for the $\delta_{1} = 0.25$ trading rule
+  and interpret them both qualitatively and quantitatively. How many days is each position held for? What
+  the return on the trade? 
