@@ -35,9 +35,9 @@ add some components to the estimation, such as standard errors and test statisti
 period. Of course, you will also have to gather volume data for the stock.
 
 
-### Bollen & Whaley 2005 Error-Correction Model
+### Bollen & Whaley 1998 Error-Correction Model
 
-In their paper _Simulating Supply_ (Risk 2005), Bollen and Whaley present a novel Monte Carlo simulation from a pair of equations repesenting oil and natural gas returns and
+In their paper _Simulating Supply_ (Risk 1998), Bollen and Whaley present a novel Monte Carlo simulation from a pair of equations repesenting oil and natural gas returns and
 futures basis. They estimate their equations via MLE and then use the estimated equations to simulate forward and replicate MGRM's 1-for-1 hedging strategy. 
 
 Your job in this project, should you choose to accept it, is to replace their model equations with error-correction equations. You need to produce the same basic results but
