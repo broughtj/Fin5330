@@ -1,0 +1,270 @@
+\voffset=-.5in
+\hoffset=-0.4in
+\documentclass[11pt]{article}
+\renewcommand{\textwidth}{6.0 in}
+%\renewcommand{\textheight}{9.75 in}
+
+\usepackage{graphicx}
+\usepackage{lscape}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage[pdftex]{color}
+
+\usepackage{textcomp}
+
+\textheight 8.6 in
+\flushbottom
+
+\setlength{\parindent}{0in}
+
+\begin{document}\pagestyle{empty}
+
+\textbf{Finance 5330, Spring 2019}
+
+\vspace{3.5mm}
+
+\textbf{Review Notes: Vector Autoregressive Models}
+\vspace{3.5mm}
+
+
+This is a review of Vector Autoregressive Models (VARs).  The purpose is to
+provide a review and to fix notation and ideas. We will assume, unless 
+stated otherwise, that we are dealing with a stationary VAR$(p)$ process. These
+short notes are not meant to replace your classroom notes, but rather to supplement,
+summarize, and to correct notation.  I hope they are helpful to you.
+
+\vspace{10mm}
+\textbf{Reduced-Form VARs}
+
+\vspace{3.5mm}
+A reduced-form VAR$(p)$ consists of $K$ endogenous variables, 
+$y_{t} = (y_{1t}, y_{2t}, \ldots, y_{Kt})^{\prime}$, and can be written as:
+
+\begin{equation*}
+y_{t} = \nu + A_{1} y_{t-1} + A_{2} y_{t-2} + \cdots + A_{p} y_{t-p} + u_{t}
+\end{equation*} 
+
+\vspace{3.5mm}
+For $K=2$ (bivariate) a VAR$(p)$ model in matrix form is the following:
+
+\vspace{3mm}
+\begin{equation*}
+\left[ \begin{array}{c} y_{1t} \\ y_{2t} \end{array} \right] = \left[\begin{array}{c} \nu_{1} \\ \nu_{2} \end{array}\right]
++ \begin{bmatrix} a_{11}^{(1)} & a_{12}^{(1)} \\ a_{21}^{(1)} & a_{22}^{(1)} \end{bmatrix} \times 
+\left[\begin{array}{c} y_{1t-1} \\ y_{2t-1} \end{array} \right] + 
+\cdots + 
+\begin{bmatrix} a_{11}^{(p)} & a_{12}^{(p)} \\ a_{21}^{(p)} & a_{22}^{(p)} \end{bmatrix} \times
+\left[\begin{array}{c} y_{1t-p} \\ y_{2t-p} \end{array} \right] +  
+\left[\begin{array}{c} u_{1t} \\ u_{2t} \end{array} \right]
+\end{equation*}
+
+\vspace{3mm}
+We can obtain the variance-covariance matrix as $E[u_{t}u_{t}^{\prime}] = \Omega$.
+
+\vspace{3mm}
+\textbf{Note:} A VAR model is a Seemingly Unrelated Regressions (SUR) model with each equation containing the same regressors. 
+In this special case we noted that there is no additional efficiency gained by systems estimation (using GLS).  So the optimal
+estimation strategy is to apply OLS equation-by-equation to VAR system. Estimating the VAR system in this form is particularly 
+convenient.
+
+\vspace{10mm}
+\textbf{Vector Moving Average Form of the Reduced-Form VAR} \\
+
+\vspace{3.5mm}
+We noted that every stationary VAR can be represented as an infinite-order Vector Moving Average (VMA) model.  The model in this
+form is given by the following:
+
+\vspace{3.5mm}
+\begin{equation*}
+y_{t} = \mu + \sum\limits_{i=0}^{\infty} \Phi_{i} u_{t-i}
+\end{equation*}
+
+in which $\mu = \sum\limits_{i=0}^{\infty} \Phi_{i} \nu$.
+
+\vspace{3mm}
+\textbf{Note:} Typically the model is estimated in the VAR$(p)$ form and ``inverted'' to the VMA form.
+
+\newpage
+To go from the VAR$(p)$ form to the VMA form one applies the following recursions:\
+
+\begin{equation*}
+\Phi_{s} = \sum\limits_{j=1}^{s} \Phi_{s-j} A_{j}, \mbox{\quad for $s = 1, 2, \ldots$,}
+\end{equation*}
+
+in which $\Phi_{0} = I_{K}$ and $A_{j} = 0$ for $j > p$.
+
+\vspace{3.5mm}
+We noted that we desire the VMA form of the model because:
+\begin{itemize}
+ \item It is most convenient to calculate variances in this form because the VMA is a linear combination
+       of indenpendent terms. Thus, there are no covariance terms in the calculations.
+ \item We would like to interpret the $\phi_{ij}$ elements of the $\Phi_{i}$ matrices as dynamic multipliers 
+       and conduct impulse response analysis. 
+\end{itemize}
+
+
+\vspace{10mm}
+\textbf{Structural Vector Autoregressive Models (SVARs)} \\
+
+\vspace{3.5mm}
+We noted that before we could interpret the $\phi_{ij}$'s as dynamic multipliers that we typically need
+to impose some structure on the VAR model. That is because unless the variance-covariance matrix, $\Omega$, 
+is diagonal, the $\phi_{ij}$ cannot be cleanly interpreted as an exogenous unexpected shock to the $u_{it}$.
+
+
+\vspace{3.5mm}
+We specify an SVAR$(p)$ as follows:
+
+\vspace{2mm}
+\begin{equation*}
+B y_{t} = \gamma + \Gamma_{1} y_{t-1} + \Gamma_{2} y_{t-2} + \cdots + \Gamma_{p} y_{t-p} + \epsilon_{t}
+\end{equation*}
+
+The structural variance-covariance matrix is $D$, which is diagonal. This gives us the following mapping
+from reduced-form to structural parameters:
+
+\vspace{2mm}
+\begin{eqnarray*}
+&& \nu = B^{-1} \gamma \\
+&& A_{i} = B^{-1} \Gamma_{i} \mbox{, \quad for i = 1, 2, \ldots, p} \\
+&& \Omega = B^{-1} D B^{-1 \prime}
+\end{eqnarray*}
+
+\vspace{3.5mm}
+\textbf{Notes:} Typically, without some kind of restrictions the structural parameters are not identified
+by the reduced-form parameters.
+
+\vspace{3.5mm}
+For $K=2$ (bivariate) an SVAR$(p)$ model in matrix form is the following:
+
+\vspace{3mm}
+\begin{equation*}
+\begin{bmatrix} b_{11} & b_{12} \\ b_{21} & b_{22} \end{bmatrix} \times 
+\left[ \begin{array}{c} y_{1t} \\ y_{2t} \end{array} \right] = \left[\begin{array}{c} \gamma_{1} \\ \gamma_{2} \end{array}\right]
++ \begin{bmatrix} \gamma_{11}^{(1)} & \gamma_{12}^{(1)} \\ \gamma_{21}^{(1)} & \gamma_{22}^{(1)} \end{bmatrix} \times 
+\left[\begin{array}{c} y_{1t-1} \\ y_{2t-1} \end{array} \right] + 
+\cdots + 
+\begin{bmatrix} \gamma_{11}^{(p)} & \gamma_{12}^{(p)} \\ \gamma_{21}^{(p)} & \gamma_{22}^{(p)} \end{bmatrix} \times
+\left[\begin{array}{c} y_{1t-p} \\ y_{2t-p} \end{array} \right] +  
+\left[\begin{array}{c} \epsilon_{1t} \\ \epsilon_{2t} \end{array} \right]
+\end{equation*}
+
+
+\newpage
+One way that we discussed to impose some structure on a VAR is to estimate a VAR in Sim's triangular form
+(for an SVAR$(1)$ model):
+
+\vspace{3mm}
+\begin{align*}
+y_{1t} &= \gamma_{1} + \gamma_{11}^{(1)} y_{1t-1} + \gamma_{12}^{(1)} y_{2t-1} + \epsilon_{1t} \\
+y_{2t} &= \gamma_{2} - b_{21} y_{1t} + \gamma_{21}^{(1)} y_{1t-1} + \gamma_{22}^{(1)} y_{2t-1} + \epsilon_{2t} \\
+\end{align*}
+
+\vspace{3.5mm}
+We noted that the algebra of OLS will guarantee that the variance-covariance matrix of the model in this form
+will be diagonal.  The structural matrix $B$ from this model will look like the following:
+
+\begin{equation*}
+B = \begin{bmatrix} 1 & 0 \\ b_{21} & 1 \end{bmatrix}
+\end{equation*}
+
+\vspace{3.5mm}
+\textbf{Note:} Sim's triangular form imposes a zero restriction on the parameter $b_{12}$. This is enough 
+structure to allow us to identify the structural parameters.
+
+\vspace{5mm}
+We note that the triangular form imposes a recursive causal order.  That is, the variable $y_{1t}$ has a contemporaneous
+effect on the variable $y_{2t}$, but $y_{2t}$ does not have a contemporaneous effect on $y_{1t}$. With the model in this
+form we could proceed to estimatation equation-by-equation with OLS.
+
+\vspace{10mm}
+\textbf{Identification of the SVAR from the Reduced-Form VAR and the Cholesky Decomposition} \\
+
+\vspace{3.5mm}
+The triangular matrix decomposition (a special case of the Cholesky decomposition) decomposes a 
+positive semi-definite matrix as follows:\
+
+\begin{equation*}
+\Omega = T \Lambda T^{\prime}
+\end{equation*}
+
+\vspace{3.5mm}
+For which, 
+\begin{equation*}
+T = \begin{bmatrix} 1 & 0 \\ t_{21} & 1 \end{bmatrix} \mbox{, \quad} \Lambda = \begin{bmatrix} \lambda_{1} & 0 \\ 0 & \lambda_{2} \end{bmatrix}
+\end{equation*}
+
+\vspace{3.5mm}
+We can use this result to identify the SVAR model as follows:
+
+\begin{itemize}
+ \item Estimate each equation of the reduced-form VAR with OLS.
+ \item Apply the triangular decomposition to the estimated variance-covariance matrix.
+\end{itemize}
+
+\newpage
+This gives us the following psuedo-structural VAR:
+
+\begin{align*}
+ T^{-1} y_{t} &= T^{-1} \nu + T^{-1} A_{1} y_{t-1} + \cdots + T^{-1} A_{p} y_{t-p} + T^{-1} u_{t} \\
+ B y_{t} &= \gamma + \Gamma_{1} y_{t-1} + \cdots + \Gamma_{p} y_{t-p} + \epsilon_{t} \\
+\end{align*}
+
+Which one can see is equivalent to the SVAR model. The important thing to note here is that the order
+of the variables as they enter the reduced-form VAR model, $y_{t} = (y_{1t},  y_{2t})^{\prime}$, determines
+the recursive causal ordering of the identified SVAR.
+
+\vspace{10mm}
+\textbf{Structural Vector Moving Average Form} \\
+
+\vspace{3.5mm}
+Just as with the reduced-form VAR, the stationary SVAR model implies an infinite-order structural vector moving
+average form:
+
+\vspace{2mm}
+\begin{align*}
+y_{t} &= \sum\limits_{i=0}^{\infty} \Theta_{i} \gamma + \sum\limits_{i=0}^{\infty} \Theta_{i} \epsilon_{t-i} \\
+      &= \mu + \sum\limits_{i=0}^{\infty} \Theta_{i} \epsilon_{t-i} \\
+\end{align*}
+
+\vspace{3.5mm}
+The $\Theta_{j}$ matrices can be obtained from the following recursions:
+
+\begin{equation*}
+\Theta_{j} = \Phi_{j} B^{-1} \mbox{, \quad for $i = 1, 2, \ldots$,}
+\end{equation*}
+
+\vspace{3.5mm}
+Now we can interpret the $\theta_{ij}$ parameters as dynamic multipliers and conduct policy analysis with
+impulse response functions and forecast error variance decompositions.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
