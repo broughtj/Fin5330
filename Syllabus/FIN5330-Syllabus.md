@@ -1,10 +1,10 @@
 # Finance 5330: Financial Econometrics
 
-### Spring Semester, 2019
+### Spring Semester, 2020
 
 ## Course Information
 
-- Course Dates: January 7 - April 23
+- Course Dates: January 06 - April 29
 - Course Time: TR 4:30 - 5:45 PM 
 - Course Room: Huntsman Hall 126 
 - [Slack Channel](https://fin5330.slack.com)
@@ -15,7 +15,7 @@
 
 - [Tyler J. Brough](http://tylerbrough.com)
 - Office Hours: TBD & By Appointment
-- Office: BUS 605
+- Office: BUS 512 
 - Email: tyler dot brough at aggiemail dot usu dot edu (please use this one and NOT my tyler dot brough at usu dot
 		edu account)
 
@@ -25,8 +25,10 @@
 ### Course Description
 
 This course covers modern financial econometrics and data analysis. We will cover
-conventional time series models as well as modern algorithmic models. We will 
-cover applications to risk management and trading (among other topics).
+predictive time series models as well as modern algorithmic models. We will 
+cover applications to risk management and trading (among other topics). We will also
+discuss modern developments such as how financial econometrics is influenced by and
+interfaces with artificial intelligence and machine learning. 
 
 
 ### Prerequisites
@@ -37,44 +39,54 @@ cover applications to risk management and trading (among other topics).
 
 ### Textbooks
 
-The _required_ textbook is the following:
+The _required_ textbooks are the following:
+
+* [Analysis of Financial Data][Koop] by Gary Koop.
+
+* [Scrum: The Art of Doing Twice the Work in Half the Time][Sutherlands] by Jeff and J.J. Sutherland 
+
+Other books that we may draw from: 
+
+* [Introduction to Statistical Learning][JWHT] by James, Witten, Hastie, and Tibshirani. 
+
+* [Analysis of Financial Time Series - 3rd Edition][Tsay] by Ruey Tsay.
+
+* [The Econometrics of Financial Markets][CLM] by Campbell, Lo, and MacKinlay.
 
 * [Applied Econometric Time Series - 4th Edition][Enders] by Walter Enders. 
 
 
-Other books that we may draw from: 
-
-* [The Econometrics of Financial Markets][CLM] by Campbell, Lo, and MacKinlay.
-
-* [Analysis of Financial Time Series - 3rd Edition][Tsay] by Ruey Tsay.
-
-* [Introduction to Statistical Learning][JWHT] by James, Witten, Hastie, and Tibshirani. 
-
 ### Methods of Teaching and Learning
 
-This course will be taught as a graduate seminar-style course. That means that
+This course will be taught as a graduate seminar style course. That means that
 your participation is crucial. You will get out of the course what you 
 individually and collectively put in. 
 
 Most lectures will consist of Jupyter notebooks and slides covering the 
 material, though wherever possible I will use the Socratic method. 
 
+One essential element of this course is project management using the
+agile methodology of Scrum. The course consists of four projects. You 
+will be placed into teams and the balance of the semester will be completing
+the four projects as a team. I will the stakeholder to whom you will make
+periodic update reports and ultimately the deliverables for the projects. More 
+details will be given about this in class. 
+
 
 ### Assessment and Grading
 
 Students will be assessed according to the following:
 
-* Class Preparation and Participation (10%) - Much has been said about this already above. Let me just emphasize that no student can earn an A in the course who 
+* Class Preparation, Participation and Citizenship (20%) - Much has been said about this already above. Let me just emphasize that no student can earn an A in the course who 
 does not take this component of their grade seriously!
 
-* Weekly Assignments (10%) - There will be approximately weekly assignments that cover
-  the numerical and computational aspects of modeling. 
+* Project I (20%) - Pairs trading and statistical arbitrage  
 
-* Replication Study (20%) - Students must select a study from the literature on empirical finance to replicate.
+* Project II (20%) - Volatility models and predictive densities
 
-* Midterm Exam (30%) - This will be a take-home exam. Students will be given two weeks to complete this exam.
+* Project III (20%) - Tests of superior predictive ability (RC, SPA, StepM)
 
-* Final Exam (30%) - This will be a take-home exam. Students will be given two weeks to complete this exam (including finals week).
+* Project IV (20%) - Implement and test an original dynamic trading strategy 
 
 
 #### Slack
@@ -90,8 +102,8 @@ via a desktop browser.
 
 #### Programming
 
-I will be presenting code in the Python programming language throughout the 
-course. Occasionally, I might present some code in R. You are expected to 
+I will be presenting code in the Julia programming language throughout the 
+course. Occasionally, I might present some code in Python or R. You are expected to 
 complete your programming assignments and exams in one of these programming
 languages. 
 
@@ -114,15 +126,17 @@ We will attempt to cover the following list of topics:
 
 Import dates:
 
-* __Jan 8__ - First day of classes
-* __Mar 11 - 15__ - Spring break
-* __Apr 23__ - Last day of classes
-* __Apr 25 - May 1__ - Final exams
+* __Jan 06__ - First day of classes
+* __Mar 02 - 06__ - Spring break
+* __Apr 21__ - Last day of classes
+* __Apr 23 - Apr 29__ Final exams
 
 <br>
 
-The weekly schedule will be updated on the course [Google Spreadsheet](https://docs.google.com/spreadsheets/d/19SaSDul_vLtMXCrmr3Lbmg2AX5avENA5QR-hrxsiheg/edit?usp=sharing)
+The weekly schedule will be updated on the course [Google Spreadsheet]()
 
+[Koop]: https://www.wiley.com/en-us/Analysis+of+Financial+Data-p-9780470013212
+[Sutherlands]: https://amzn.to/2STnGci
 [Enders]: https://tinyurl.com/ydfxb3j4
 [CLM]: https://press.princeton.edu/titles/5904.html
 [Tsay]: https://tinyurl.com/yc8yq576
