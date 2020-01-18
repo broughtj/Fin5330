@@ -1,3 +1,4 @@
 *.ipython_checkpoints
 *.RData
 *.RHistory
+.DS_Store
