@@ -137,7 +137,7 @@ i.e. $x_{t}$ is normal and independent over time.
 
 Typically, time series are not iid, which is what makes them interesting. 
 
-\vspace{3mms}
+\vspace{3mm}
 
 Ex: unusually high inflation today is likely to lead to unusually high inflation tomorrow. 
 
