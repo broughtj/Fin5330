@@ -1,0 +1,483 @@
+---
+title: Finance 5330 - Financial Econometrics
+subtitle: Time Series Notes IV
+author: Tyler J. Brough
+institute: Department of Finance and Economics 
+titlegraphic: ./images/vertical-logo-blue.png
+fontsize: 10pt
+output:
+ beamer_presentation:
+    template: ./beamer-template.tex
+    keep_tex: false
+    toc: true
+ ioslides_presentation:
+    smaller: true
+make149: true
+---
+
+<style>
+slides > slide.backdrop {
+  background: white;
+  border-bottom: 0px;
+  box-shadow: 0 0 0;
+}
+
+slides > slide {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  border-bottom: 3px solid  #F66733;
+  box-shadow:  0 3px 0 #00488D;
+
+}
+
+.title-slide hgroup h1 {
+  color: #00488D;
+}
+
+h2 {
+
+  color: #00488D;
+}
+
+slides > slide.dark {
+  background: #00488D !important;
+  border-bottom: 0;
+  box-shadow: 0 0 0;
+}
+
+.segue h2 {
+  color: white;
+}
+
+slides > slide.title-slide {
+  border-bottom: 0;
+  box-shadow: 0 0 0;
+}
+
+ol, ul {
+
+padding-bottom: 10px;
+
+}
+
+</style>
+
+
+# Beginning Time Series Topics IV
+
+
+## __Unit Roots Continued__
+
+\vspace{2mm}
+
+The random walk with drift
+
+\vspace{3mm}
+
+$$
+x_{t} = \mu + x_{t-1} + \varepsilon_{t}
+$$
+
+\vspace{8mm}
+
+where $\mu = E(x_{t} - x_{t-1}) = \mu$ and $\{\varepsilon_{t}\}$ is white noise. The constant term $\mu$ represents the time trend of $x_{t}$ and is called the drift. 
+
+
+
+## 
+
+\vspace{2mm}
+
+Assume the initial value of $x_{t}$ is $x_{0}$, then
+
+$$
+\begin{aligned}
+x_{1}  &= \mu + x_{0} + \varepsilon_{1} \\
+& \\
+x_{2}  &= \mu + x_{1} + \varepsilon_{2} = 2 \mu + x_{0} + \varepsilon_{1} + \varepsilon_{2} \\
+& \\
+\vdots  \\
+& \\
+x_{t}  &= t \mu + x_{0} + \varepsilon_{t} + \varepsilon_{t-1} + \cdots + \varepsilon_{1} 
+\end{aligned}
+$$
+
+\vspace{5mm}
+
+The last equation shows that $\{x_{t}\}$ consists of a time trend $t\mu$ and a pure random-walk process $\sum\limits_{i=1}^{t} \varepsilon_{i}$.
+
+
+## 
+
+\vspace{2mm}
+
+$Var(\sum\limits_{i=1}^{t} \varepsilon_{i}) = t\sigma_{\varepsilon}^{2}$ where $\sigma_{\varepsilon}^{2}$ is the variance of $\varepsilon_{t}$.
+
+\vspace{8mm}
+
+The conditional standard deviation of $x_{t}$ is $\sqrt{t} \sigma_{\varepsilon}^{2}$, which grows at a slower rate than the conditional expectation of $x_{t}$. Therefore, if we graph $x_{t}$ against the time index $t$, we have a time trend with slope $\mu$
+
+\vspace{8mm}
+
+Let's look at some actual market data for IBM from 1947 to 1997.
+
+
+## __Trend-Stationary Time Series__
+
+\vspace{2mm}
+
+A closely related model that exhibits linear trend is the trend-stationary time series model:
+
+\vspace{2mm}
+
+$$
+x_{t} = \beta_{0} + \beta_{1} t + z_{t}
+$$
+
+\vspace{5mm}
+
+where $z_{t}$ is a stationary time series (e.g. a stationary AR(p) series). Here $x_{t}$ grows linearly in time with rate $\beta_{1}$ and hence can exhibit behavior similar to a random walk with drift. 
+
+
+
+## 
+
+\vspace{2mm}
+
+There is one major difference between the random walk with drift and the trend-stationary series: 
+
+\vspace{2mm}
+
+__Random Walk with Drift__
+
+\vspace{2mm}
+
+$$
+\begin{aligned}
+E(x_{t})  &= x_{0} + \mu t \quad \mbox{and} \\
+Var(x_{t} &= t \sigma_{\varepsilon}^{2} 
+\end{aligned}
+$$
+
+\vspace{2mm}
+
+which clearly is not stationary because the variance is directly time dependent. While
+
+\vspace{2mm}
+
+__Trend-Stationary Series__
+
+\vspace{2mm}
+
+$$
+\begin{aligned}
+E(x_{t})  &= \beta_{0} + \beta_{1} t \quad \mbox{and} \\
+Var(x_{t} &= Var(z_{t})
+\end{aligned}
+$$
+
+\vspace{2mm}
+
+which is finite and time-independent.
+
+
+## __General Unit-Root Nonstationary Models__
+
+\vspace{2mm}
+
+Consider an ARMa model. If we extend the model by allowing the AR polynomial to have $1$ as a characteristic root, then the model becomes the Autoregressive Integrated Moving Average (ARIMA) model. 
+
+\vspace{8mm}
+
+An ARIMA model is said to be unit-root nonstationary because its AR polynomial has a unit root. 
+
+\vspace{8mm}
+
+A conventional approach for handling unit-root nonstationarity is differencing. 
+
+
+## __Differencing__
+
+\vspace{2mm}
+
+A time series $x_{t}$ is said to be an ARIMA(p,1,q) process if the change series
+
+\vspace{3mm}
+
+$$
+c_{t} = x_{t} - x_{t-1} = (1 - L) x_{t}
+$$
+
+\vspace{2mm}
+
+follows a stationary and invertible ARMA(p,q) process. 
+
+\vspace{8mm}
+
+__Ex:__ in finance price series are commonly believed to be nonstationary, but the log-return series $r_{t} = \ln{(p_{t})} - \ln{(p_{t-1})}$ is stationary. Here the price series $\{p_{t}\}$ is unit-root nonstationary and hence can be treated as an ARIMA process. 
+
+
+## 
+
+\vspace{2mm}
+
+The idea of transforming a nonstationary series into a stationary one by considering its change series is called _differencing_ in the time series literature.
+
+\vspace{5mm}
+
+Formally, $c_{t} = x_{t} - x_{t-1}$ is referred to as the first differenced series of $x_{t}$.
+
+\vspace{8mm}
+
+In some fields a time series $x_{t}$ may contain multiple unit roots. For example, if both $x_{t}$ and its first differenced series $c_{t} = x_{t} - x_{t-1}$ are unit-root nonstationary, but $s_{t} = c_{t} - c_{t-1} = x_{t} - 2 x_{t-1} + x_{t-2}$ is weakly stationary, then $x_{t}$ has double unit roots, and $s_{t}$ is the second differenced series of $x_{t}$.
+
+
+##
+
+\vspace{2mm}
+
+If $s_{t}$ follows an ARMA(p,q) model then $x_{t}$ is an ARIMA(p, 2, q) process.
+
+\vspace{5mm}
+
+__Testing For Unit Roots__
+
+\vspace{3.5mm}
+
+__Q:__ Do economic variables such as GNP, employment, and interet rates tend to revert back to a long-run trend after a shock, or do they follow random walks?
+
+\vspace{3.5mm}
+
+The question is important for two reasons:
+
+\vspace{2mm}
+
+1. If these variables follow random walks, a regression of one against another can lead to spurious results. 
+
+
+##
+
+\vspace{2mm}
+
+For example, suppose two series are generated by independent random walks: 
+
+\vspace{2mm}
+
+$$
+\begin{aligned}
+x_{t} &= x_{t-1} + \epsilon_{t} \\
+& \\
+y_{t} &= y_{t-1} + \nu_{t} \\
+& \\
+\mbox{and } &  E(\epsilon_{t} \nu_{t}) = 0 \mbox{ for all $t$, $s$}.
+\end{aligned}
+$$
+
+\vspace{8mm}
+
+Now suppose we run $y_{t}$ on $x_{t}$ by OLS
+
+
+
+##
+
+\vspace{3mm}
+
+$$
+y_{t} = \alpha + \beta x_{t} + u_{t}
+$$
+
+\vspace{5mm}
+
+The assumptions underlying the CLRM are violated. In this case you tend to see "significant" $\beta$ more often than the OLS formula say you should.
+
+\vspace{5mm}
+
+2. If affects our understanding of the economy and our ability to make forecasts: 
+
+    - If a variable such as GNP follows a random walk, then the effects of a temporary shock (e.g. increase in oil prices or an increase in government spending)
+      not dissapate after several years but will instead have permanent effects. 
+    - If stock prices follow random walks they should not be forecastable.
+    
+    
+## __Nelson & Plosser__
+
+\vspace{2mm}
+
+NP found evidence that GNP and other macro variables behave like random walks. This spurred a huge literature to investigate whether or not economic and financial variables are random walks or are trend-reverting. Several of these studies show that many economic time series do appear to be random walks or at least have random walk components. 
+
+
+
+## 
+
+\vspace{2mm}
+
+Most of these studies use unit-root tests introduced by Dicky & Fuller (1979) JASA. 
+
+\vspace{5mm}
+
+Suppose we believe that a variable $Y_{t}$, which has been growing over time, can be described by the following equation:
+
+\vspace{3mm}
+
+$$
+Y_{t} = \alpha + \beta t + \rho Y_{t-1} + \epsilon_{t}
+$$
+
+\vspace{5mm}
+
+One possibility is that $Y_{t}$ has been growing because $Y_{t}$ has a positive time trend ($\beta > 0$) but would be stationary after detrending (i.e. $\rho < 1$) In this case $Y_{t}$ could be used in a regression and all of the results and tests of the CLRM would apply. 
+
+
+## 
+
+\vspace{2mm}
+
+Another possibility is that $Y_{t}$ has been growing because it follows a random walk with a positive drift (i.e. $\alpha > 0$, $\beta = 0$, and $\rho = 1$). In this case we would need to work with $\Delta Y_{t}$ (change series).
+
+\vspace{5mm}
+
+Detrending would not make the series stationary, and the inclusion of $Y_{t}$ in a regression would lead to spurious results. 
+
+\vspace{5mm}
+
+One might think that the equation could be estimated by OLS and that the $t$ statistic on $\hat{\rho}$ could be used to test $H_{0}: \rho = 1$. However, if the true value is indeed $1$ then OLS would lead to spurious results, which could mean we could incorrectly reject the random walk hypothesis. 
+
+
+##
+
+\vspace{2mm}
+
+Dickey & Fuller derived the distribution for the estimator $\hat{\rho}$ that holds when $\rho = 1$ and generated statistics for an $F$-test of the random walk hypothesis, i.e. the hypothesis that $\beta = 0$ and $\rho = 1$. 
+
+\vspace{3mm}
+
+The __Dickey-Fuller Test__ works as follows, supposing
+
+\vspace{2mm}
+
+$$
+Y_{t} = \alpha + \beta t + \rho Y_{t-1} + \epsilon_{t}
+$$
+
+\vspace{2mm}
+
+First, using OLS run the (unrestricted) regression
+
+\vspace{2mm}
+
+$$
+Y_{t} - Y_{t-1} = \alpha \beta t + (\rho - 1) Y_{t-1} 
+$$
+
+\vspace{2mm}
+
+and then the (restricted) regression
+
+\vspace{2mm}
+
+$$
+Y_{t} - Y_{t-1} = \alpha
+$$
+
+
+##
+
+\vspace{2mm}
+
+Then calculate the $F$-ratio
+
+\vspace{2mm}
+
+$$
+F = \frac{(SSR_{R} - SSR_{UR})}{SSR_{UR}} \frac{N-k}{q}
+$$
+
+\vspace{5mm}
+
+where $SSR_{R}$ is the sum of squared residuals of the restricted model and $SSR_{UR}$ likewise for the unrestricted model. $(N-k)$ is the degrees of freedom of the unrestricted model and $q$ is the number of restrictions placed on the restricted model.
+
+\vspace{5mm}
+
+This ratio is not distributed as a standard $F$ distribution under the null hypothesis. Instead one must use the distributions tabulated by Dickey and Fuller. 
+
+
+##
+
+\vspace{2mm}
+
+__Note:__ critical values from the Dickey-Fuller distribution are much larger than for the standard $F$-distribution.
+
+\vspace{5mm}
+
+__The Augmented Dickey-Fuller Test__
+
+\vspace{3mm}
+
+The original Dickey-Fuller test implicitly makes the assumption of no serial correlation in $\epsilon_{t}$. Often we would like to allow for serial correlation in $\epsilon_{t}$ and still test for a unit root. This can be done with the augmented Dickey-Fuller test. 
+
+\vspace{8mm}
+
+This test is carried out by extending the data-generating process (DGP) to include lagged changes in $Y_{t}$ on the right-hand side:
+
+
+
+##
+
+\vspace{2mm}
+
+$$
+Y_{t} = \alpha + \beta t + \rho Y_{t-1} + \sum\limits_{j=1}^{p} \lambda_{j} \Delta y_{t-j} + \epsilon_{t}
+$$
+
+\vspace{2mm}
+
+where $\Delta Y_{t} = Y_{t} - Y_{t-1}$.
+
+\vspace{4mm}
+
+The unit-root test proceeds as before: 
+
+\vspace{2mm}
+
+1. Using OLS, run the unrestricted regression
+
+\vspace{1mm}
+
+$$
+Y_{t} - Y_{t-1} = \alpha + \beta t + (\rho - 1) Y_{t-1} + \sum\limits_{j=1}^{p} \lambda_{j} Y_{t-j} 
+$$
+
+\vspace{1mm}
+
+2. And then the restricted regression
+
+\vspace{1mm}
+
+$$
+Y_{t} - Y_{t-1} = \alpha + \sum\limits_{j=1}^{p} \lambda_{j} Y_{t-j}
+$$
+
+
+##
+
+\vspace{1mm}
+
+3. Form the $F$-statistic to test if the restrictions hold ($\beta = 0$ and $\rho=1$)
+
+\vspace{5mm}
+
+__Phillips-Perron Test__
+
+\vspace{2mm}
+
+Consider the following two regressions:
+
+\vspace{2mm}
+
+$$
+\begin{aligned}
+y_{t} &= \mu + \alpha y_{t-1} + \epsilon_{t} \quad \mbox{($\ast$)} \\
+& \\
+y_{t} &= \mu + \beta (t-\frac{1}{2} T) + \alpha y_{t-1} + \epsilon_{t} \quad \mbox{($\ast\ast$)}
+\end{aligned}
+$$
