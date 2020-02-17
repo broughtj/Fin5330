@@ -1,0 +1,10 @@
+---
+title: "FIN 5330 - Homework 1"
+author: "Tyler J. Brough"
+date: "February 17, 2020"
+output: pdf_document
+---
+
+## __Problem 1__
+
+

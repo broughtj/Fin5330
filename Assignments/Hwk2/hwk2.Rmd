@@ -1,7 +1,7 @@
 ---
 title: "FIN 5330 - Homework 2"
 author: "Tyler J. Brough"
-date: "February 19, 2019"
+date: "February 17, 2020"
 output: pdf_document
 ---
 
@@ -9,7 +9,7 @@ output: pdf_document
 
 <br>
 
-1. Simulate $T = 500$ observations from an AR(1) process for $\phi = \{0.25, 0.5, 0.75, 0.8, 0.9\}$. 
+1. Simulate $T = 500$ observations from an $AR(1)$ process for $\phi = \{0.25, 0.5, 0.75, 0.8, 0.9\}$. 
 
    $$y_{t} = \phi y_{t-1} + \epsilon_{t}$$
 
@@ -39,11 +39,64 @@ output: pdf_document
    using the CLT and parametric Monte Carlo. The bootstrap obviously does not need to make such assumptions. Compare
    to the results above. 
 
+
 <br>
 
 ## __Problem 2__
 
+Simulate an $AR(1)$ process with parameter $\phi = 0.8$ by using the $MA(\infty)$ representation. \textbf{Hint:} you will
+have to truncate the $MA(\infty)$ representation, yielding an approximation to the $AR(1)$. Recall that the $AR(1)$ can be 
+represented by the following (i.e. the $MA(\infty)$ representation): 
+
+$$
+x_{t} = x_{0} + \sum\limits_{j=0}^{\infty} \phi^{j} \varepsilon_{t-j} \quad\quad \mbox{where } x_{0} \mbox{ is the initial condition.}
+$$
+
+
+* Plot the simulated time series. 
+
+* Estimate $\hat{\phi}$ via OLS. Report the usual suspects. 
+
 <br>
+
+
+## __Problem 3__
+
+Take the $AR(1)$ model above: 
+
+$$
+y_{t} = \phi y_{t-1} + \varepsilon_{t} \quad\quad \mbox{with } \phi = 0.8
+$$
+
+* Run the following simulation: 
+	- Set $\varepsilon_{0} = 1.0$
+	- Set $y_{0} = 0.0$
+	- Set all $\varepsilon_{t} = 0.0$ for $t > 0$ 
+	- Plot the simulated process $\{y\}_{t=0}^{T}$ as a function of time. This is called the ___impluse response function___. Interpret
+	  it in terms of the $MA$ ($\theta$) coefficients for the $AR(1)$ representation.
+	- Simulate $T = 50$ time steps in the process.
+
+<br>
+
+## __Problem 5__
+
+Simulate $T = 500$ observations from the following ARMA model:
+
+$$
+y_{t} = \phi_{1} y{t-1} + \phi_{2} y_{t-2} + \theta_{1} \varepsilon_{t-1} + \theta_{2} \varepsilon_{t-2} + \varepsilon_{t}
+$$
+
+Choose appropriate values for the $AR$ and $MA$ coefficients, as well as for $\sigma_{\varepsilon}$. 
+
+<br>
+
+* Plot the simulated time series. 
+
+* Calculate $\gamma_{0}$, $\gamma_{1}$ and $\gamma_{2}$. 
+
+<br>
+
+## __Problem 6__
 
 - Simulate $T = 500$ time steps for the following two equations:
 
@@ -66,7 +119,7 @@ output: pdf_document
 
 <br>
 
-## __Problem 3__
+## __Problem 7__
 
 <br>
 
@@ -76,7 +129,7 @@ output: pdf_document
 
 <br>
 
-## __Problem 4__
+## __Problem 8__
 
 <br>
 
