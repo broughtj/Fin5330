@@ -1,0 +1,64 @@
+\documentclass[11pt]{article}
+
+\usepackage{graphicx}
+\usepackage{lscape}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage[pdftex]{color}
+\usepackage{textcomp}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0in}
+
+\hypersetup{
+    bookmarks=true,                       % show bookmarks bar?
+    unicode=false,                        % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,                      % show Acrobat’s toolbar?
+    pdfmenubar=true,                      % show Acrobat’s menu?
+    pdffitwindow=false,                   % window fit to page when opened
+    pdfstartview={FitH},                  % fits the width of the page to the window
+    pdftitle={My title},                  % title
+    pdfauthor={Author},                   % author
+    pdfsubject={Subject},                 % subject of the document
+    pdfcreator={Creator},                 % creator of the document
+    pdfproducer={Producer},               % producer of the document
+    pdfkeywords={keyword1} {key2} {key3}, % list of keywords
+    pdfnewwindow=true,                    % links in new window
+    colorlinks=true,                      % false: boxed links; true: colored links
+    linkcolor=red,                        % color of internal links
+    citecolor=green,                      % color of links to bibliography
+    filecolor=magenta,                    % color of file links
+    urlcolor=blue                         % color of external links
+}
+
+\begin{document}\pagestyle{empty}
+
+\textbf{Finance 5330, Spring 2020} \\
+\textbf{Project I -  Description}     \\
+
+\bigskip
+This project is based on the research article \textit{Illuminating the Profitability of Pairs Trading:
+A Test of the Relative Pricing Efficiency of Markets for Water Utility Stocks} by Gutierrez and Tse (GT).
+GT examine the profitability of the basic pairs trading strategy. This strategy relies on identifying
+pairs of assets that are cointegrated. GT study stocks in the water utility industry in the hopes that 
+pairs of them will be cointegrated. 
+
+\bigskip
+Your assignment is to reproduce Exhibit 2 Panel A and Panel B, as well as Exhibit 3 (all panels) for
+three stocks that they choose. The deliverable is a Jupyter notebook with Julia or Python (or R, or 
+whatever) code that carries out the calculations. You should make tables of the results in your document
+and write several paragraphs of prose to explain the results. 
+
+\bigskip
+This project does not require you to carry out the analysis for the actual trading strategy. Instead,
+you are required to discuss how the results you found in your analysis of cointegration and 
+error-correction enable you to form such strategies. Outline a strategy of how you would use the
+econometric foundation from your analysis to set up and carry out pairs trading strategies in real
+life. What factors need to be considered when going from econometric models to real life trading?
+What data, systems, or other factors need to be considered? How does having an econometric foundation
+aid the process? What other statistical or econometric methods or procedures would aid your plan?
+What concerns about the process do you forsee as the portfolio manager?
+
+\end{document}
+
+
