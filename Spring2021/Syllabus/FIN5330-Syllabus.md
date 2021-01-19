@@ -7,13 +7,13 @@
 - Course Dates: January 19 - May 5
 - Course Time: TR 16:30 - 17:45 PM 
 - Course Room: Huntsman Hall 322
-- [Slack Channel]()
-- [Course Canvas]()
+- [Slack Channel](https://fin-5330.slack.com)
+- [Course Canvas](https://usu.instructure.com/courses/618839)
 
 
 ## Instructor Information
 
-- [Tyler J. Brough](http://tylerbrough.com)
+- [Tyler J. Brough](broughtj.github.io)
 - Office Hours: By Appointment
 - Office: BUS 512 
 - Email: tyler.brough@aggiemail.usu.edu (please use this one and NOT my other one!)
