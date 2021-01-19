@@ -1,0 +1,10 @@
+---
+title: "Cointegration, Error-Correction, and Pairs Trading"
+subtitle: "Finance 5330: Project 2"
+author: Tyler J. Brough
+output: pdf_document
+---
+
+## Introduciton 
+
+Blah blah blah

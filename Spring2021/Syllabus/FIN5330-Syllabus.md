@@ -28,7 +28,7 @@ each centered around a fundamental econometric method. The lectures for each mod
 theory for the method as well as the necessary mathematical, statistical, algorithmic, and computational tools and
 techniques that will support its implementation for your projects. 
 
-The mode of the course is applied data analysis rather than theoretical econometrics. The focus is on becoming facile at 
+The mode of the course is applied data analysis rather than theoretical econometrics. The focus is on becoming facile with
 implementing data analysis techniques for professional applications rather than on conducting proofs of theory for
 academic research. Foundational theory will be presented as necessary, but even then the focus will be on developing
 deep intuition and understanding more than mastering abstract mathematical techniques. 
@@ -94,9 +94,9 @@ sessions will be recorded and posted to the course Canvas page for your review.
 
 Students will be assessed according to the following:
 
-* Class Preparation, Participation and Citizenship (20%) - 
-  Much has been said about this already above. Let me just emphasize that no student can earn an A in the course who
-  does not take this component of their grade seriously!
+* Class Preparation, Participation and Citizenship (20%) - Let me emphasize that no student can earn an A in the course
+  who does not take this component of their grade seriously! You must participate and help create a positive learning
+  experience for others. 
 
 * Project I (20%)   - Linear regression, loss functions, and futures portfolio hedging 
 
@@ -104,7 +104,17 @@ Students will be assessed according to the following:
 
 * Project III (20%) - GARCH, filtered historical simulation, and value-at-risk
 
-* Project IV (20%)  - Tests of superior predictability 
+* Project IV (20%)  - Trading strategies, forecasting, and tests of superior predictability
+
+
+#### Feedback and Resubmissions
+
+
+There is no predetermined point schedule for grades. This is a graduate level course. I will assume that you are a muture
+internally-motived student. I will grade your projects according to a rubric. You may resubmit your work to be reassessed
+as many times as you like. I will give you direct feedback on your work during office hour counseling sessions rather 
+than posting scores to Canvas. You must take the initiative to meet with me. If you do, I will make time to work with to
+improve your work until you feel comfortable submitting it for final grading. 
 
 
 #### Slack

@@ -1,0 +1,10 @@
+---
+title: "Linear Regression, Loss Functions, and Futures Hedging"
+subtitle: "Finance 5330: Project 1"
+author: Tyler J. Brough
+output: pdf_document
+---
+
+## Introduciton 
+
+Blah blah blah

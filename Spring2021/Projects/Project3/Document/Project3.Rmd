@@ -1,0 +1,10 @@
+---
+title: "GARCH, Filtered Historical Simulation, and Value-At-Risk"
+subtitle: "Finance 5330: Project 3"
+author: Tyler J. Brough
+output: pdf_document
+---
+
+## Introduciton 
+
+Blah blah blah

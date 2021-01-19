@@ -1,0 +1,10 @@
+---
+title: "Trading Strategies, Forecasting, and Tests of Superior Predictive Ability"
+subtitle: "Finance 5330: Project 4"
+author: Tyler J. Brough
+output: pdf_document
+---
+
+## Introduciton 
+
+Blah blah blah
