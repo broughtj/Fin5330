@@ -354,6 +354,352 @@ Returns}\label{notes-on-chapter-01---financial-asset-prices-and-returns}}
 \end{itemize}
 \end{frame}
 
+\begin{frame}{}
+\protect\hypertarget{section-1}{}
+\begin{itemize}
+\tightlist
+\item
+  Derivative contracts
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ``Derive'' their value from a reference asset (called the underlying
+    or spot)
+  \item
+    Payoff based on an underlying asset (commodities, stocks, interest,
+    rates, etc)
+  \end{itemize}
+\end{itemize}
+
+\vspace{10mm}
+
+\begin{itemize}
+\tightlist
+\item
+  Two main classes:
+
+  \begin{itemize}
+  \item
+    \begin{enumerate}
+    [(1)]
+    \tightlist
+    \item
+      options:
+    \end{enumerate}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Call: the right, but not the obligation, to buy an underlying
+      asset at a predetermined price (strike) at a predetermined time
+      (expiry)
+    \item
+      Put: the right, but not the obligation, to sell an underlying
+      asset at a strike price at expiry
+    \end{itemize}
+  \item
+    \begin{enumerate}
+    [(1)]
+    \setcounter{enumi}{1}
+    \tightlist
+    \item
+      futures: specify delivery of an asset (or cash value equivalent)
+      at a time known as maturity for an agreed upon price (payable at
+      maturity)
+    \end{enumerate}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Long futures (person buying / taking delivery)
+    \item
+      Short futures (person selling / making delivery)
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Section 1.3: Equity Prices \& Returns}
+\protect\hypertarget{section-1.3-equity-prices-returns}{}
+\begin{itemize}
+\tightlist
+\item
+  Prices: represent the most basic type of data for financial
+  econometrics
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Quoted bid/ask prices
+  \item
+    Historical transaction prices
+  \item
+    Frequency
+
+    \begin{itemize}
+    \tightlist
+    \item
+      High: intraday (sub-second time resolution)
+    \item
+      Medium: daily, weekly,
+    \item
+      Low: monthly, quarterly, annual
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Hayek on the Informational Role of Prices}
+\protect\hypertarget{hayek-on-the-informational-role-of-prices}{}
+\begin{itemize}
+\tightlist
+\item
+  AER 1945 article titled ``The Use of Knowledge in Society''
+\item
+  Prices convey information
+
+  \begin{itemize}
+  \tightlist
+  \item
+    CME closing due to flooding (grain elevators would not quote prices)
+  \item
+    Roll on weather and OJ futures
+  \item
+    Armen Alchian on stocks who were contractors to build the first
+    atomic bomb
+  \end{itemize}
+\item
+  Prices are what we want to work with, but they present very
+  challenging statistical problems (nonstationarity)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Project II focuses on one particular econometric technique
+    (cointegration and error-correction) that powerfully overcomes these
+    problems
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Section 1.3.2 Returns}
+\protect\hypertarget{section-1.3.2-returns}{}
+\begin{itemize}
+\tightlist
+\item
+  Dollar returns
+\end{itemize}
+
+\[
+\$R_{kt} = P_{t} - P_{t-k}
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  where \(P_{t}\) is the price at time \(t\) and \(P_{t-k}\) is the
+  price at \(t-k\) (\(k\) is the length of the period)
+\item
+  Problems:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Not scale-free (still in \(\$\) terms)
+  \item
+    Not proportional to initial investment
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-2}{}
+\begin{itemize}
+\tightlist
+\item
+  Simple returns
+\end{itemize}
+
+\[
+R_{t} = \frac{P_{t} - P_{t-1}}{P_{t-1}} = \frac{P_{t}}{P_{t-1}} - 1
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  where \(\frac{P_{t}}{P_{t-1}}\) is the price relative quotient (or
+  gross return)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-3}{}
+\begin{itemize}
+\tightlist
+\item
+  Note that:
+\end{itemize}
+
+\[
+1 + R_{t} = \frac{P_{t}}{P_{t-1}}
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  Represents the value of investing \(\$1\) at \(t-1\) from perspective
+  of \(t\)
+\end{itemize}
+
+\vspace{8mm}
+
+\begin{itemize}
+\tightlist
+\item
+  Holding period return \(R_{t}(k)\) is given by
+\end{itemize}
+
+\[
+\begin{aligned}
+R_{t}(k) &= \frac{P_{t}}{P_{t-1}} - 1 \\
+         &= \frac{P_{t}}{P_{t-1}} \times \frac{P_{t-1}}{P_{t-2}} \times \cdots \times \frac{P_{t-k+2}}{P_{t-k+1}} \times \frac{P_{t-k+1}}{P_{t-k}} - 1 \\
+         &= (1 + R_{t}) \times (1 + R_{t-1}) \times \cdots \times (1 + R_{t-k+2}) \times (1 + R_{t-k+2}) \times (1 + R_{t-k+1}) - 1 \\
+         &= \left[ \prod_{j=0}^{k-1} (1 + R_{t-j}) \right] - 1
+\end{aligned}
+\]
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-4}{}
+Ex: If the frequency is monthly, then the simple return for a holding
+period of 1 year is given by
+
+\[
+R_{t}(12) = \left[\prod_{j=0}^{11} (1 + R_{t-j}) \right] - 1
+\]
+
+\vspace{10mm}
+
+\begin{itemize}
+\tightlist
+\item
+  The annualized return \(R_{t}(12) = (1 + R_{t})^{12} - 1\)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Log Returns}
+\protect\hypertarget{log-returns}{}
+\begin{itemize}
+\tightlist
+\item
+  The log return of an asset is defined as
+\end{itemize}
+
+\[
+r_{t} = \log{(1 + R_{t})} = \log{P_{t-}} - \log{P_{t-1}} 
+\]
+
+\vspace{8mm}
+
+\begin{itemize}
+\item
+  Log returns are continuously compounded returns
+\item
+  Note: \(\log_{e}(\cdot) = \ln{(\cdot)}\) (natural logarithm)
+\item
+  Loenhard Euler (1707 - 1783)
+\end{itemize}
+
+\[
+e \equiv \lim_{s \rightarrow \infty} (1 + \frac{1}{s})^{s} \approx 2.71828
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  So called \emph{natural expotential} (and \emph{natural log}) because
+  \(e\) is the natural limit of this quantity
+\item
+  Demo in Julia
+\end{itemize}
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-5}{}
+\begin{itemize}
+\tightlist
+\item
+  The limit formula represents the value of an account at the end of the
+  year that started with \(\$1\) and paid \(100\%\) interest per year
+  but with the interest compounded continuously over time rather than at
+  discrete intervals (i.e.~at every infinitesimal increment of time)
+\end{itemize}
+
+\vspace{10mm}
+
+\begin{itemize}
+\tightlist
+\item
+  If \(m\) is the compounding period and \(r_{t}\) the return, then
+\end{itemize}
+
+\[
+P_{t} = P_{t-1} \left(1 + \frac{r_{t}}{m}\right)^{m}
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  Continuous compounding is produced when \(m \rightarrow \infty\)
+\end{itemize}
+
+\[
+P_{t} = P_{t-1} \lim_{m \rightarrow \infty} \left(1 + \frac{r_{t}}{m}\right)^{m}
+\]
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-6}{}
+\begin{itemize}
+\tightlist
+\item
+  Let \(s = \frac{m}{r_{t}}\), then we can rewrite this as
+\end{itemize}
+
+\[
+\begin{aligned}
+P_{t} &= P_{t-1} \lim_{s \rightarrow \infty} \left[ \left(1 + \frac{1}{s} \right)^{s r_{t}} \right] \\
+      &= P_{t-1} \left[ \lim_{s \rightarrow \infty} \left(1 + \frac{1}{s} \right)^{s} \right]^{r_{t}} \\
+      &= P_{t-1} e^{r_{t}}
+\end{aligned}
+\]
+\end{frame}
+
+\begin{frame}{}
+\protect\hypertarget{section-7}{}
+\begin{itemize}
+\tightlist
+\item
+  Note: \(\ln{(\cdot)}\) is the inverse of \(\exp{(\cdot)}\), so taking
+  logs gives us
+\end{itemize}
+
+\[
+\begin{aligned}
+e^{r_{t}}        &= \frac{P_{t}}{P_{t-1}} \\
+\ln{(e^{r_{t}})} &= \ln{\left(\frac{P_{t}}{P_{t-1}}\right)} \\
+r_{t}            &= \ln{(P_{t})} - \ln{(P_{t-1})} \\
+\end{aligned}
+\]
+
+\begin{itemize}
+\tightlist
+\item
+  (So we've come full circle)
+\end{itemize}
+\end{frame}
+
 
 %\section[]{}
 %\frame{\small \frametitle{Table of Contents}

@@ -84,12 +84,10 @@ make149: true
 
 ## 
 
-- Derivative contracts
-	- "Derive" their value from a reference asset (called the underlying or spot)
-	- Payoff based on an underlying asset (commodities, stocks, interest, rates, etc)
+Derivative contracts
 
-\vspace{10mm}
-
+- "Derive" their value from a reference asset (called the underlying or spot)
+- Payoff based on an underlying asset (commodities, stocks, interest, rates, etc)
 - Two main classes:
 	- (1) options: 
 		- Call: the right, but not the obligation, to buy an underlying asset at a predetermined price (strike) at a predetermined time (expiry)
@@ -104,10 +102,11 @@ make149: true
 - Prices: represent the most basic type of data for financial econometrics
 	- Quoted bid/ask prices
 	- Historical transaction prices
-	- Frequency
-		- High: intraday (sub-second time resolution)
-		- Medium: daily, weekly, 
-		- Low: monthly, quarterly, annual
+
+- Frequency
+	- High: intraday (sub-second time resolution)
+	- Medium: daily, weekly, 
+	- Low: monthly, quarterly, annual
 
 
 ## Hayek on the Informational Role of Prices
@@ -123,138 +122,4 @@ make149: true
 	- Project II focuses on one particular econometric technique (cointegration and error-correction) that powerfully overcomes these problems
 
 
-## Section 1.3.2 Returns
 
-- Dollar returns
-
-$$
-\$R_{kt} = P_{t} - P_{t-k}
-$$
-
-
-- where $P_{t}$ is the price at time $t$ and $P_{t-k}$ is the price at $t-k$ ($k$ is the length of the period)
-- Problems:
-	- Not scale-free (still in $\$$ terms)
-	- Not proportional to initial investment
-
-
-##
-
-- Simple returns
-
-$$
-R_{t} = \frac{P_{t} - P_{t-1}}{P_{t-1}} = \frac{P_{t}}{P_{t-1}} - 1
-$$
-
-- where $\frac{P_{t}}{P_{t-1}}$ is the price relative quotient (or gross return)
-
-
-## 
-
-- Note that:
-
-$$
-1 + R_{t} = \frac{P_{t}}{P_{t-1}}
-$$
-
-- Represents the value of investing $\$1$ at $t-1$ from perspective of $t$
-
-\vspace{8mm}
-
-- Holding period return $R_{t}(k)$ is given by
-
-$$
-\begin{aligned}
-R_{t}(k) &= \frac{P_{t}}{P_{t-1}} - 1 \\
-         &= \frac{P_{t}}{P_{t-1}} \times \frac{P_{t-1}}{P_{t-2}} \times \cdots \times \frac{P_{t-k+2}}{P_{t-k+1}} \times \frac{P_{t-k+1}}{P_{t-k}} - 1 \\
-		 &= (1 + R_{t}) \times (1 + R_{t-1}) \times \cdots \times (1 + R_{t-k+2}) \times (1 + R_{t-k+2}) \times (1 + R_{t-k+1}) - 1 \\
-		 &= \left[ \prod_{j=0}^{k-1} (1 + R_{t-j}) \right] - 1
-\end{aligned}
-$$
-
-
-## 
-
-Ex: If the frequency is monthly, then the simple return for a holding period of 1 year is given by
-
-$$
-R_{t}(12) = \left[\prod_{j=0}^{11} (1 + R_{t-j}) \right] - 1
-$$
-
-\vspace{10mm}
-
-- The annualized return $R_{t}(12) = (1 + R_{t})^{12} - 1$
-
-
-## Log Returns
-
-- The log return of an asset is defined as 
-
-$$
-r_{t} = \log{(1 + R_{t})} = \log{P_{t-}} - \log{P_{t-1}} 
-$$
-
-\vspace{8mm}
-
-- Log returns are continuously compounded returns
-
-- Note: $\log_{e}(\cdot) = \ln{(\cdot)}$ (natural logarithm)
-
-- Loenhard Euler (1707 - 1783)
-
-$$
-e \equiv \lim_{s \rightarrow \infty} (1 + \frac{1}{s})^{s} \approx 2.71828
-$$
-
-- So called _natural expotential_ (and _natural log_) because $e$ is the natural limit of this quantity 
-- Demo in Julia
-
-
-## 
-
-- The limit formula represents the value of an account at the end of the year that started with $\$1$ and paid $100\%$ interest per year but with the interest compounded
-  continuously over time rather than at discrete intervals (i.e. at every infinitesimal increment of time)
-
-\vspace{10mm}
-
-- If $m$ is the compounding period and $r_{t}$ the return, then 
-
-$$
-P_{t} = P_{t-1} \left(1 + \frac{r_{t}}{m}\right)^{m}
-$$
-
-- Continuous compounding is produced when $m \rightarrow \infty$
-
-
-$$
-P_{t} = P_{t-1} \lim_{m \rightarrow \infty} \left(1 + \frac{r_{t}}{m}\right)^{m}
-$$
-
-
-## 
-
-- Let $s = \frac{m}{r_{t}}$, then we can rewrite this as 
-
-$$
-\begin{aligned}
-P_{t} &= P_{t-1} \lim_{s \rightarrow \infty} \left[ \left(1 + \frac{1}{s} \right)^{s r_{t}} \right] \\
-      &= P_{t-1} \left[ \lim_{s \rightarrow \infty} \left(1 + \frac{1}{s} \right)^{s} \right]^{r_{t}} \\
-	  &= P_{t-1} e^{r_{t}}
-\end{aligned}
-$$
-
-
-## 
-
-- Note: $\ln{(\cdot)}$ is the inverse of $\exp{(\cdot)}$, so taking logs gives us
-
-$$
-\begin{aligned}
-e^{r_{t}}        &= \frac{P_{t}}{P_{t-1}} \\
-\ln{(e^{r_{t}})} &= \ln{\left(\frac{P_{t}}{P_{t-1}}\right)} \\
-r_{t}            &= \ln{(P_{t})} - \ln{(P_{t-1})} \\
-\end{aligned}
-$$
-
-
-- (So we've come full circle)
