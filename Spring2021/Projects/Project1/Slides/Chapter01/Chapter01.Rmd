@@ -258,3 +258,30 @@ $$
 
 
 - (So we've come full circle)
+
+
+## 
+
+- Log returns are especially useful for multiperiod calculations because products become sums
+
+
+- Example: 
+
+$$
+\begin{aligned}
+R_{t}(2) &= \log{(P_{t})} - \log{(P_{t-2})} \\
+         &= \left[ \log{(P_{t})} - \log{(P_{t-1})} \right] + \left[\log{(P_{t-1})} - \log{(P_{t-2})} \right] \\
+		 &= r_{t} + r_{t-1} 
+\end{aligned}
+$$
+
+
+- The $k$-period return (by extension) is
+
+$$
+\begin{aligned}
+r_{t}(k) &= \log{(P_{t})} - \log{(P_{t-k})} \\
+         &= r_{t} + r_{t-1} + \cdots + r_{t-(k-1)} \\
+		 &= \sum_{j=0}^{k-1} r_{t-j} \quad \mbox{(i.e. sum of single-period log returns)} \\
+\end{aligned}
+$$
