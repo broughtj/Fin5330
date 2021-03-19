@@ -7,20 +7,34 @@ output: pdf_document
 
 ## Introduciton 
 
-This project is based on the research article *Illuminating the Profitability of Pairs Trading: A Test of the Relative
-Pricing Efficiency of Markets for Water Utility Stocks* by Gutierrez and Tse (GT). GT examine the profitability of the
-basic pairs trading strategy. This strategy relies on identifying pairs of assets that are cointegrated. GT study stocks
-in the water utility industry in the hopes that pairs of them will be cointegrated.
+This exercise calls for the preparation of a case study of a hedging problem. The various parts of 
+the exercise below will ask you to pose a simple, perhaps imaginary, hedging scenario, to collect
+appropriate data, to analyze the data statistically, and to recommend a hedge. 
 
-Your assignment is to reproduce Exhibit 2 Panel A and Panel B, as well as Exhibit 3 (all panels) for three stocks that
-they choose. The deliverable is a Jupyter notebook with Julia or Python (or R, or whatever) code that carries out the
-calculations. You should make tables of the results in your document and write several paragraphs of prose to
-explain the results.
+\vspace{10mm}
 
-This project does not require you to carry out the analysis for the actual trading strategy. Instead, you are required
-to discuss how the results you found in your analysis of cointegration and error-correction enable you to form such
-strategies. Outline a strategy of how you would use the econometric foundation from your analysis to set up and carry
-out pairs trading strategies in real life. What factors need to be considered when going from econometric models to real
-life trading? What data, systems, or other factors need to be considered? How does having an econometric foundation aid
-the process? What other statistical or econometric methods or procedures would aid your plan? What concerns about the
-process do you forsee as the portfolio manager?
+* __(a)__ _Description of Scenario:_ In 100 words or less, describe the scenario: "Who is hedging
+  how much of what at what data, and why?" Suggest the futures contract or contracts that you will
+  consider, and why. 
+
+
+* __(b)__ _Data Collection:_ Collect your data for the hedging problem. Supply, with your assignment,
+  at least 26 observations on each of the prices or other quantities of interest. Attached, are some
+  example data for heating oil spot and futures obtained from the US Energy Information Administration (EIA).
+  See here: . You may use Bloomberg or any other source of data. (If you are having trouble with this, plese 
+  contact me and I will assist you.)
+
+
+* __(c)__ _Data Analysis:_ Using statistical methods, analyze the data for a reasonable estimate of the 
+  risk-minimizing futures position(s). You may wish to analyze both price increments and log-price increments,
+  suggesting which one of these approaches may lead to a better hedging estimate (if either), and why you think 
+  so.
+
+* __(d)__ _Hedge Recommendation:_ Based on your analysis, and on any other reasoning that you may wish to supply,
+  recommend a hedge. State precisely the timing and quantities involved in your hedging strategy, as though they
+  are instructions to the broker. 
+
+\vspace{10mm}
+
+The deliverable for your project is either a GitHub repository or a zip file containing the various resources for
+your project (data files, code files, Jupyter notebooks, narratives, etc). 
