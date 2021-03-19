@@ -15,14 +15,15 @@ appropriate data, to analyze the data statistically, and to recommend a hedge.
 
 * __(a)__ _Description of Scenario:_ In 100 words or less, describe the scenario: "Who is hedging
   how much of what at what data, and why?" Suggest the futures contract or contracts that you will
-  consider, and why. 
+  consider, and why. Your analysis should cover a hedge for a specific time period (like over the next 30
+  days) as well as a stack-and-roll scenario (like rebalancing the hedge monthly for the next 5 years).
 
 
 * __(b)__ _Data Collection:_ Collect your data for the hedging problem. Supply, with your assignment,
   at least 26 observations on each of the prices or other quantities of interest. Attached, are some
   example data for heating oil spot and futures obtained from the US Energy Information Administration (EIA).
-  See here: . You may use Bloomberg or any other source of data. (If you are having trouble with this, plese 
-  contact me and I will assist you.)
+  See here: <https://www.eia.gov/petroleum/data.php#prices>. You may use Bloomberg or any other source of data.
+  (If you are having trouble with this, plese contact me and I will assist you.)
 
 
 * __(c)__ _Data Analysis:_ Using statistical methods, analyze the data for a reasonable estimate of the 
