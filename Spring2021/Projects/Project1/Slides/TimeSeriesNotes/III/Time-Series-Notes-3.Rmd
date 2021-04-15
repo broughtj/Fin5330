@@ -1,0 +1,606 @@
+---
+title: Finance 5330 - Financial Econometrics
+subtitle: Time Series Notes III
+author: Tyler J. Brough
+institute: Department of Finance and Economics 
+titlegraphic: ./images/vertical-logo-blue.png
+fontsize: 10pt
+output:
+ beamer_presentation:
+    template: ./beamer-template.tex
+    keep_tex: false
+    toc: true
+ ioslides_presentation:
+    smaller: true
+make149: true
+---
+
+<style>
+slides > slide.backdrop {
+  background: white;
+  border-bottom: 0px;
+  box-shadow: 0 0 0;
+}
+
+slides > slide {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  border-bottom: 3px solid  #F66733;
+  box-shadow:  0 3px 0 #00488D;
+
+}
+
+.title-slide hgroup h1 {
+  color: #00488D;
+}
+
+h2 {
+
+  color: #00488D;
+}
+
+slides > slide.dark {
+  background: #00488D !important;
+  border-bottom: 0;
+  box-shadow: 0 0 0;
+}
+
+.segue h2 {
+  color: white;
+}
+
+slides > slide.title-slide {
+  border-bottom: 0;
+  box-shadow: 0 0 0;
+}
+
+ol, ul {
+
+padding-bottom: 10px;
+
+}
+
+</style>
+
+
+# Beginning Time Series Topics III
+
+## ___Unit Roots___
+
+\vspace{2mm}
+
+This basic random walk is 
+
+\vspace{2mm}
+
+$$
+x_{t} = x_{t-1} + \varepsilon_{t}
+$$
+
+\vspace{2mm}
+
+with
+
+\vspace{2mm}
+
+$$
+E_{t-1}(\varepsilon_{t}) = 0
+$$
+
+\vspace{5mm}
+
+Note the property: 
+
+\vspace{3mm}
+
+$$
+E_{t}(x_{t+1}) = x_{t}
+$$
+
+
+##
+
+\vspace{2mm}
+
+Because of this property random walks are a popular model for asset prices. 
+
+\vspace{5mm}
+
+Notice: the random walk is a special case of the AR(1) model in which $\phi = 1$
+
+\vspace{2mm}
+
+$$
+x_{t} = \phi x_{t-1} + \varepsilon_{t}
+$$
+
+\vspace{5mm}
+
+__Ex:__ 
+
+\vspace{2mm}
+
+* $x_{0}$, the initial value of the series is a real number denoting the starting value of the process. 
+
+* If $x_{t}$ is the log-price of a stock then $x_{0}$ would be the log-price of the stock at its initial public offering (IPO).
+
+
+##
+
+\vspace{5mm}
+
+If $\varepsilon_{t}$ has a symmetric distribution (normal, t, etc) around zero, then conditional on $x_{t-1}$, $x_{t}$ has a 50-50 chance to go up or down, implying that $x_{t}$ would go up or down at random.
+
+\vspace{10mm}
+
+__NB:__ this fits well the economics of the Efficient Markets Hypothesis (EMH). Early tests of the EMH were essentially tests for a random walk.
+
+
+
+##
+
+\vspace{2mm}
+
+Within the AR(1) framework $\phi = 1$, which does not satisfy the weak-stationarity assumption. A Random walk is not weakly stationary, and we call it a unit-root nonstationary time series. 
+
+\vspace{6mm}
+
+Under the random walk model of (log) stock prices the price is not predictable or mean-reverting.
+
+\vspace{6mm}
+
+
+We will take a small detour regarding forecasting to show this. 
+
+
+## Forecasting
+
+\vspace{2mm}
+
+Forecasting is an important application of time series analysis. 
+
+\vspace{3mm}
+
+For the AR(p) model:
+
+\vspace{2mm}
+
+* Suppose we are at the time index $h$ and interested i n forecasting $x_{h+l}$, where $l \ge 1$.
+
+\vspace{1.5mm}
+
+* The time index $h$ is called the forecast origin 
+
+\vspace{1.5mm}
+
+* The positive integer $l$ is called the forecast horizon.
+
+
+## 
+
+Let $\hat{x}_{h}(l)$ be the forecast of $x_{h+l}$ using  the minimum squared error loss function and $F_{n}$ be the collection of information available at the forecast origin $h$. Then the forecast $\hat{x}_{h}(l)$ is chosen such that
+
+\vspace{5mm}
+
+$$
+E\{[x_{h+l} - \hat{x}_{h}(l)]^{2} \enskip | \enskip F_{h} \} \enskip \le \enskip \min_{g} E[(x_{h+l} - g)^{2} \enskip | \enskip F_{h}]
+$$
+
+\vspace{5mm}
+
+where $g$ is a function of the information available at time $h$ (inclusive), that is a function of $F_{h}$.
+
+
+##
+
+\vspace{2mm}
+
+We refer to $\hat{x}_{h}(l)$ as the $l$-step ahead forecast of $x_{t}$ at the forecast origin $h$.
+
+\vspace{8mm}
+
+__1-Step Ahead Forecast__
+
+\vspace{3mm}
+
+$$
+x_{h+1} = \phi_{0} + \phi_{1} x_{h} + \ldots + \phi_{p} x_{h+1-p} + \varepsilon_{h+1}
+$$
+
+\vspace{5mm}
+
+Under the minimum squared error loss function, the point forecast of $x_{h+1}$ given $F_{h} = \{x_{h}, x_{h-1}, \cdots \}$ is --
+
+
+## 
+
+\vspace{2mm}
+
+the conditional expectation
+
+\vspace{2mm}
+
+$$
+\hat{x}_{h}(1) = E\left(x_{h+1} | x_{h} \right) = \phi_{0} + \sum\limits_{i=1}^{p} \phi_{i} x_{h+1-i}
+$$
+
+\vspace{2mm}
+
+and the associated forecast error is
+
+$$
+e_{h}(1) = x_{h+1} - \hat{x}_{h}(1) = \varepsilon_{h+1}
+$$
+
+\vspace{5mm}
+
+The variance of the $1$-step ahead forecast error is
+
+$$
+Var[e_{h}(1)] = Var(\varepsilon_{h+1}) = \sigma_{\varepsilon}^{2}
+$$
+
+
+
+## 
+
+\vspace{2mm}
+
+If $\varepsilon_{t}$ is normally distributed, then a $95\%$ $1$-step ahead interval forecast of $x_{h+1}$ is $\hat{x}_{h}(1) \pm 1.96 \sigma_{\varepsilon}$
+
+\vspace{5mm}
+
+In econometrics $\varepsilon_{t+1}$ is often referred to as the shock to the series at time $t+1$
+
+\vspace{8mm}
+
+__2-Step Ahead__
+
+\vspace{2mm}
+
+Next consider $x_{h+2}$ at the forecast origin $h$. From the AR(p) model we have 
+
+\vspace{2mm}
+
+$$
+x_{h+2} = \phi_{0} + \phi_{1} x_{h+1} + \cdots + \phi_{p} x_{h+2-p} + \varepsilon_{h+2}
+$$
+
+
+##
+
+\vspace{2mm}
+
+Taking conditional expectation, we get
+
+\vspace{3mm}
+
+$$
+\hat{x}_{h}(2) = E\left(x_{h+2} | F_{h} \right) = \phi_{0} + \phi_{1} \hat{x}_{h}(l) + \phi_{2} x_{h} + \cdots + \phi_{p} x_{h+2-p}
+$$
+
+\vspace{3mm}
+
+and forecast error
+
+$$
+e_{h}(2) = x_{h+2} - \hat{x}_{h}(2) - \phi_{1}[x_{h+1} - \hat{x}_{h}(1)] + \varepsilon_{h+2} = \varepsilon_{h+2} + \phi_{1} \varepsilon_{h+1}
+$$
+
+\vspace{5mm}
+
+The variance of the forecast error is
+
+\vspace{3mm}
+
+$$
+\begin{aligned}
+Var[e_{h}(2)] &= Var(\varepsilon_{h+2} + \phi \varepsilon_{h+1}) \\
+              &= (1 + \phi_{1}^{2}) \sigma_{\varepsilon}^{2}
+\end{aligned}
+$$
+
+
+
+##
+
+\vspace{2mm}
+
+__Note:__ $Var[e_{h}(2)] \ge Var[e_{h}(1)]$
+
+\vspace{3mm}
+
+Common sense tells us we are more uncertain about $x_{h+2}$ than about $x_{h+1}$ at time index $h$.
+
+\vspace{8mm}
+
+__Multi-Step Ahead__
+
+\vspace{3mm}
+
+In general
+
+\vspace{3mm}
+
+$$
+x_{h+l} = \phi_{0} + \phi_{1} x_{h+l-1} + \cdots + \phi_{p} x_{h+l-p} + \varepsilon_{h+l}
+$$
+
+\vspace{3mm}
+
+and
+
+\vspace{2mm}
+
+$$
+\hat{x}_{h}(l) = \phi_{0} + \sum\limits_{i=1}^{p} \phi_{i} \hat{x}_{h}(l - i)
+$$
+
+
+##
+
+\vspace{2mm}
+
+The $l$-step ahead forecast error is
+
+\vspace{4mm}
+
+$$
+e_{h}(l) = x_{h+l} - \hat{x}_{h}(l)
+$$
+
+\vspace{10mm}
+
+* It can be shown that for a stationary AR(p) model, $\hat{x}_{h}(l)$ converges to $E(x_{t})$ as $l \rightarrow \infty$
+
+\vspace{3mm}
+
+* This has the meaning that for such a series the long-term point forecast approaches the unconditional mean.
+
+
+
+## Forecasting with MA Models
+
+\vspace{2mm}
+
+__1-Step Ahead (for MA(1))__
+
+\vspace{3mm}
+
+$$
+x_{h+1} = \mu + \varepsilon_{h+1} - \theta_{1} \varepsilon_{h}
+$$
+
+\vspace{3mm}
+
+Taking the conditional expectation we have
+
+\vspace{3mm}
+
+$$
+\hat{X}_{h}(l = 1) = E\left( x_{h+1} | F_{h}\right) = \mu - \theta_{1} \varepsilon_{h}
+$$
+
+\vspace{3mm}
+
+$$
+e_{h}(1) = x_{h+1} - \hat{x}_{h}(1) = \varepsilon_{h+1}
+$$
+
+\vspace{3mm}
+
+$$
+Var[e_{h}(1)] = \sigma_{\varepsilon}^{2}
+$$
+
+
+
+##
+
+\vspace{2mm}
+
+__2-Step Ahead__
+
+\vspace{3mm}
+
+$$
+\begin{aligned}
+x_{h+2} &= \mu + \varepsilon_{h+2} - \phi \varepsilon_{h+1} \\
+        & \\
+\mbox{We have} \\
+        & \\
+\hat{X}_{h}(l = 2) &= E\left( x_{h+2} | F_{h}\right) = \mu \\
+        & \\
+e_{h}(2) &= x_{h+2} - \hat{x}_{h}(2) = \varepsilon_{h+2} - \theta \varepsilon_{h+1} \\
+         & \\ 
+Var[e_{h}(2)] &= (1 + \theta_{1}^{2}) \sigma_{\varepsilon}^{2}
+\end{aligned}
+$$
+
+\vspace{4.5mm}
+
+__NB:__ $\varepsilon_{h+1} = x_{h+1} - \mu + \theta_{1} \varepsilon_{h}$
+
+\vspace{1.5mm}
+
+__NB:__ $E(x_{h+1}) = \mu - \theta_{1} \varepsilon_{t} - \mu + \theta_{1} \varepsilon_{h} = 0$
+
+
+##
+
+\vspace{2mm}
+
+Note: The $2$-step ahead forecast is simply the unconditional mean of the model. This is true for any forecast origin $h$.
+
+\vspace{8mm}
+
+More generally, $\hat{X}_{h}(l) = \mu$ for $l \ge 2$. Thus for any MA(1) mean reversion take only $1$ time period.
+
+\vspace{8mm}
+
+Similarly for an MA(2) we have
+
+\vspace{5mm}
+
+$$
+x_{h+l} = \mu + \varepsilon_{h+l} - \theta_{1} \varepsilon_{h+l-1} - \theta_{2} \varepsilon_{h+l-2}
+$$
+
+
+
+##
+
+\vspace{3mm}
+
+And we obtain
+
+\vspace{10mm}
+
+$$
+\begin{aligned}
+\hat{X}_{h}(1) &= \mu - \theta_{1} \varepsilon_{h} - \theta_{2} \varepsilon_{h+l-2} \\
+& \\
+\hat{X}_{h}(2) &= \mu - \theta_{2} \varepsilon_{h} \\
+& \\
+\hat{X}_{h}(l) &= \mu \quad \mbox{for} \quad l \ge 2 \\
+\end{aligned}
+$$
+
+
+## 
+
+\vspace{2mm}
+
+Now back to the random walk model:
+
+\vspace{3mm}
+
+$$
+x_{t} = x_{t-1} + \varepsilon_{t}
+$$
+
+\vspace{8mm}
+
+
+__1-Step Ahead Forecast__
+
+\vspace{4mm}
+
+$$
+\hat{X}_{h}(1) = E\left[x_{h+1} | x_{h}, x_{h-1}, \ldots \right] = x_{h}
+$$
+
+\vspace{5mm}
+
+which is the log stock price at the forecast origin, or in other words the best guess for tomorrow's closing stock price is today's closing stock price. Or the current stock price contains all relevant information regarding the firm. 
+
+\vspace{2mm}
+
+__Note:__ $F_{h} = \{x_{h}\}$
+
+
+
+##
+
+\vspace{2mm}
+
+__2-Step Forecast__
+
+\vspace{3mm}
+
+$$
+\begin{aligned}
+\hat{X}_{h}(2) &= E\left[x_{h+2} \enskip | \enskip x_{h}, x_{h-1}, \ldots \right] = E\left[x_{h+1} + \varepsilon_{h+2} \enskip | \enskip x_{h}, x_{h-1}, \ldots \right] \\
+               &= E\left[x_{h+1} \enskip | \enskip x_{h}, x_{h-1}, \ldots \right] = \hat{X}_{h}(1) = x_{h}
+\end{aligned}
+$$
+
+\vspace{10mm}
+
+This is true for any forecast horizon
+
+\vspace{3mm}
+$$
+\hat{X}_{h}(l) = x_{h}
+$$
+
+
+
+##
+
+\vspace{2mm}
+
+The MA representation of the random walk model is
+
+\vspace{2mm}
+
+$$
+x_{t} = \varepsilon_{t} + \varepsilon_{t-1} + \varepsilon_{t-2} + \cdots
+$$
+
+\vspace{5mm}
+
+The representation has several important implications.
+
+\vspace{4mm}
+
+$(1.)$ The $l$-step ahead forecast error is
+
+\vspace{1mm}
+
+$$
+\begin{aligned}
+e_{h}(l) &= \varepsilon_{h+1} + \cdots + \varepsilon_{h+1} \\
+& \\
+\mbox{so that} \\
+&* \\
+Var[e_{h}(l)] &= l \sigma_{\varepsilon}^{2} \quad \mbox{(which diverges to infinity as $l \rightarrow \infty$)}
+\end{aligned}
+$$
+
+
+##
+
+\vspace{2mm}
+
+$(2.)$ The uncondtional variance of $x_{t}$ is unbounded because $Var[e_{h}(l)]$ approaches infinity as $l$ increases.
+
+\vspace{8mm}
+
+__Random Walk with Drift__
+
+\vspace{3mm}
+
+$$
+\begin{aligned}
+x_{t} &= \mu + x_{t-1} + \varepsilon_{t} \\
+      & \\
+\mbox{ where } \mu &= E\left(x_{t} - x_{t-1} \right) \\
+      & \\
+\end{aligned}
+$$
+
+\vspace{8mm}
+
+In finance (and macro) $\mu$ can be important. It is called the drift. 
+
+
+##
+
+\vspace{2mm}
+
+To see this
+
+\vspace{5mm}
+
+$$
+\begin{aligned}
+x_{1}  &= \mu + x_{0} + \varepsilon_{1} \\
+       & \\
+x_{2}  &= \mu + x_{1} + \varepsilon_{2} = 2\mu + x_{0} + \varepsilon_{2} + \varepsilon_{1} \\
+       & \\
+\vdots  \\
+       & \\
+x_{t}  &= t\mu + x_{0} + \varepsilon_{t} + \varepsilon_{t-1} + \cdots + \varepsilon_{1} 
+\end{aligned}
+$$
+
